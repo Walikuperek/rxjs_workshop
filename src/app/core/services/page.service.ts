@@ -1,9 +1,9 @@
 import {Injectable, OnDestroy} from '@angular/core';
-import {IPage} from '../../models/IPage.interface';
+import {IPage} from '../models/IPage.interface';
 import {BehaviorSubject, merge, Subscription} from 'rxjs';
 import {PAGES} from './pages.data';
 import {distinctUntilChanged, map} from 'rxjs/operators';
-import {NavPages} from '../../models/NavPage.enum';
+import {NavPages} from '../models/NavPage.enum';
 
 
 interface IPageState {
@@ -45,24 +45,21 @@ export class PageService implements OnDestroy {
     }
 
     public ngOnDestroy() {
-        this._subscription.unsubscribe(); /* Don't ever forget to unsubscribe */
+        this._subscription.unsubscribe(); /* Don't ever forget to unsubscribe from previously created observables! */
     }
 
     // -----------------------------------------------------------------------------
     // @ Public API
     public setNavPage(navPage: NavPages) {
-        this._update({
-            ...this._store$.getValue(),
-            currentNavPage: navPage,
-        });
+        this._pageChanged(navPage);
     }
 
     // -----------------------------------------------------------------------------
     // @ Private
-    private _pageChanged(navPage: NavPages): void {
+    private _pageChanged(navPage: NavPages) {
         this._update({
             ...this._store$.getValue(),
-            pages: this.currentValue.pages.filter(page => page.navPage === navPage),
+            pages: PAGES.filter(page => page.navPage === navPage),
         });
     }
 

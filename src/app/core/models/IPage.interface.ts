@@ -8,4 +8,5 @@ export interface IPage {
     description: string;
     route: string;
     navPage: NavPages;
+    isReactive: boolean;
 }

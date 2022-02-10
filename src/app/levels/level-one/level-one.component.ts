@@ -1,15 +1,17 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {FollowersHttpSimulator} from './followers.backend';
 
 @Component({
-  selector: 'app-level-one',
-  templateUrl: './level-one.component.html',
-  styleUrls: ['./level-one.component.scss']
+    selector: 'app-level-one',
+    templateUrl: './level-one.component.html',
+    styleUrls: ['./level-one.component.scss']
 })
 export class LevelOneComponent implements OnInit {
 
-  constructor() { }
+    constructor(public backend: FollowersHttpSimulator) {
+    }
 
-  ngOnInit(): void {
-  }
+    ngOnInit(): void {
+    }
 
 }

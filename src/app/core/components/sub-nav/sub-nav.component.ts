@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {PageService} from '../../services/page/page.service';
+import {PageService} from '../../services/page.service';
 
 @Component({
   selector: 'core-sub-nav',

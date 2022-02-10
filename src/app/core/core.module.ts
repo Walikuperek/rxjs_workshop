@@ -3,8 +3,10 @@ import {CommonModule} from '@angular/common';
 import {SideNavComponent} from './components/side-nav/side-nav.component';
 import {SubNavComponent} from './components/sub-nav/sub-nav.component';
 import {SvgIconsPreloaderComponent} from './components/svg-icons-preloader/svg-icons-preloader.component';
-import {PageService} from './services/page/page.service';
+import {PageService} from './services/page.service';
 import {MatTooltipModule} from '@angular/material/tooltip';
+import {RouterModule} from '@angular/router';
+import {RandomStringService} from './services/random-string.service';
 
 const COMPONENTS = [
     SideNavComponent,
@@ -13,7 +15,8 @@ const COMPONENTS = [
 ];
 
 const SERVICES = [
-    PageService
+    PageService,
+    RandomStringService
 ];
 
 @NgModule({
@@ -22,7 +25,8 @@ const SERVICES = [
     ],
     imports: [
         CommonModule,
-        MatTooltipModule
+        MatTooltipModule,
+        RouterModule
     ],
     exports: [
         ...COMPONENTS
