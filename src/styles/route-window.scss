@@ -1,0 +1,10 @@
+.route-window {
+  --side-nav-width: 4.5rem;
+  --sub-nav-width: 380px;
+  --margin-between-sub-navs: 0.5em;
+  --margin-between-subnav-route-window: 1em;
+
+  margin-left: 0.5em;
+  height: 100%;
+  min-width: calc(100vw - var(--side-nav-width) - var(--margin-between-sub-navs) - var(--sub-nav-width) - var(--margin-between-subnav-route-window));
+}

@@ -1,1 +1,28 @@
-/* You can add global styles to this file, and also import other style files */
+@import "styles/sidenav";
+@import "styles/route-window";
+
+body {
+  min-height: 100vh;
+  height: 100vh;
+  overflow: hidden;
+  width: 100%;
+}
+
+html {
+  height: 100%;
+  width: 100%;
+  font-family: "Roboto", sans-serif;
+  font-weight: 300;
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+}
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
