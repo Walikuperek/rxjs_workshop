@@ -5,6 +5,7 @@ import {SolvedLevelOneRoutingModule} from './solved-level-one-routing.module';
 import {SolvedLevelOneComponent} from './solved-level-one.component';
 
 import {HighlightModule} from 'ngx-highlightjs';
+import {MatIconModule} from "@angular/material/icon";
 
 @NgModule({
     declarations: [
@@ -13,7 +14,8 @@ import {HighlightModule} from 'ngx-highlightjs';
     imports: [
         CommonModule,
         SolvedLevelOneRoutingModule,
-        HighlightModule
+        HighlightModule,
+        MatIconModule
     ],
 })
 export class SolvedLevelOneModule {

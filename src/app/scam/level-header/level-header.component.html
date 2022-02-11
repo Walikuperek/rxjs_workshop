@@ -1,7 +1,12 @@
 <div class="d-flex align-items-start flex-wrap">
     <div class="d-flex flex-wrap">
         <div class="symbol symbol-125px mb-7 me-7 mx-2 position-relative">
-            <img src="assets/icons/rxjs_logo.png" alt="image" width="100" height="100"/>
+            <ng-container *ngIf="angularLogo; else rxjsLogo">
+                <img src="assets/icons/angular_logo.png" alt="image" width="100" height="100"/>
+            </ng-container>
+            <ng-template #rxjsLogo>
+                <img src="assets/icons/rxjs_logo.png" alt="image" width="100" height="100"/>
+            </ng-template>
         </div>
         <div class="d-flex flex-column">
             <div class="fs-2 fw-boldest mb-1">RxJS Code Base</div>

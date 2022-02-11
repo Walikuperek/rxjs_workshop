@@ -5,7 +5,8 @@
     <section class="w-100">
         <div class="card m-2">
             <div class="card-body border-top p-9">
-                <scam-level-header (followClick)="onFollowClick()"></scam-level-header>
+                <scam-level-header [angularLogo]="true"
+                                   (followClick)="onFollowClick()"></scam-level-header>
                 <scam-level-progress [count]="followers.length"></scam-level-progress>
             </div>
         </div>
