@@ -35,6 +35,7 @@ const MODULES = [
         coreLibraryLoader: () => import('highlight.js/lib/core'),
         languages: {
           typescript: () => import('highlight.js/lib/languages/typescript'),
+          xml: () => import('highlight.js/lib/languages/xml'),
         }
       }
     }

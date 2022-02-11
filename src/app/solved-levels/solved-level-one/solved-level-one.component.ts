@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, VERSION} from '@angular/core';
 
 
 @Component({
@@ -6,11 +6,12 @@ import {Component} from '@angular/core';
     templateUrl: './solved-level-one.component.html'
 })
 export class SolvedLevelOneComponent {
-
-    public codeFiles: {name: string; code: string; }[] = [];
+    public version = VERSION;
+    public codeFiles: { name: string; code: string; }[] = [];
 
     private _wholeServiceCode = getWholeServiceCode();
-    private _whileComponentTS = getWholeComponentTSCode();
+    private _wholeComponentTS = getWholeComponentTSCode();
+    private _wholeComponentHTML = getWholeHtmlCode();
 
     constructor() {
         this.codeFiles.push(
@@ -20,7 +21,11 @@ export class SolvedLevelOneComponent {
             },
             {
                 name: 'level-one-reactive.component.ts',
-                code: this._whileComponentTS
+                code: this._wholeComponentTS
+            },
+            {
+                name: 'level-one-reactive.component.html',
+                code: this._wholeComponentHTML
             }
         );
     }
@@ -39,7 +44,8 @@ export class FollowersReactiveService {
 
     public followers$: Observable<IFollower[]> = merge(this._refreshEvent$).pipe(
             switchMap(() => this._http.get()),
-            map(res => res.followers)
+            map(res => res.followers),
+            tap((followers) => this._count$.next(followers.length)),
         );
 
     public count$ = this._count$.asObservable();
@@ -57,7 +63,6 @@ export class FollowersReactiveService {
 
     public create(follower: IFollower): Observable<IFollower> {
         return this._http.post(follower).pipe(
-            tap(() => this._count$.next(this._count$.getValue() + 1)),
             tap(() => this._refreshEvent$.next(true))
         );
     }
@@ -73,8 +78,7 @@ export class FollowersReactiveService {
             tap(() => this._refreshEvent$.next(true))
         );
     }
-}
-`;
+}`;
 }
 
 function getWholeComponentTSCode(): string {
@@ -140,4 +144,54 @@ export class LevelOneReactiveComponent implements OnInit, OnDestroy {
 
 }
 `;
+}
+
+function getWholeHtmlCode(): string {
+    return `<article class="route-window bg-white overflow-auto">
+    <span class="d-flex align-items-center flex-shrink-0 p-3 link-dark text-decoration-none border-bottom">
+        <span class="fs-5 fw-semibold">Followers</span>
+    </span>
+    <section class="w-100">
+        <ng-container *ngIf="vm$ | async as vm">
+            <div class="card m-2">
+                <div class="card-body border-top p-9">
+                    <scam-level-header (followClick)="onFollowClick()"></scam-level-header>
+                    <scam-level-progress [count]="vm.count"></scam-level-progress>
+                </div>
+            </div>
+
+            <!--  Followers list  -->
+            <div class="card m-2 h-full">
+                <div class="card-body">
+                    <div class="card-title d-flex align-items-center"><h5 class="mb-0">Lista followersów</h5>
+                        <div class="ms-auto text-end">
+                            <a href="#" (click)="deleteAllFollowers(); $event.preventDefault();"
+                               class="text-sm font-semibold">Unfollow all</a></div>
+                    </div>
+                    <div class="list-group gap-4">
+                        <div *ngIf="vm.count === 0 || !vm.followers"
+                             class="list-group-item d-flex align-items-center border rounded">
+                            Brak followersów
+                        </div>
+                        <div *ngFor="let follower of vm.followers"
+                             class="list-group-item d-flex align-items-center border rounded">
+                            <div class="me-4">
+                                <div class="avatar rounded-circle"><img alt="..." src="{{follower.avatar}}" width="36">
+                                </div>
+                            </div>
+                            <div class="flex-fill">
+                                <a href="#"
+                                   routerLink="/level-1/follower/{{follower.id}}"
+                                   class="d-block h6 font-semibold mb-1">
+                                    {{follower.name}}
+                                </a>
+                                <span class="d-block text-sm text-muted">{{follower.job}}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </ng-container>
+    </section>
+</article>`;
 }

@@ -10,7 +10,8 @@ export class FollowersReactiveService {
 
     public followers$: Observable<IFollower[]> = merge(this._refreshEvent$).pipe(
             switchMap(() => this._http.get()),
-            map(res => res.followers)
+            map(res => res.followers),
+            tap((followers) => this._count$.next(followers.length)),
         );
 
     public count$ = this._count$.asObservable();
@@ -28,7 +29,6 @@ export class FollowersReactiveService {
 
     public create(follower: IFollower): Observable<IFollower> {
         return this._http.post(follower).pipe(
-            tap(() => this._count$.next(this._count$.getValue() + 1)),
             tap(() => this._refreshEvent$.next(true))
         );
     }
