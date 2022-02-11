@@ -3,7 +3,6 @@ import {CommonModule} from '@angular/common';
 
 import {LevelOneRoutingModule} from './level-one-routing.module';
 import {LevelOneComponent} from './level-one.component';
-import {FollowersHttpSimulator} from './followers.backend';
 
 
 @NgModule({
@@ -13,8 +12,7 @@ import {FollowersHttpSimulator} from './followers.backend';
     imports: [
         CommonModule,
         LevelOneRoutingModule,
-    ],
-    providers: [FollowersHttpSimulator]
+    ]
 })
 export class LevelOneModule {
 }

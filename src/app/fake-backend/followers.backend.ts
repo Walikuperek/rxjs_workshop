@@ -1,8 +1,8 @@
 import {BehaviorSubject, Observable, of} from 'rxjs';
-import {RandomStringService} from '../../core/services/random-string.service';
+import {RandomStringService} from '../core/services/random-string.service';
 import {Injectable} from '@angular/core';
 
-interface IFollower {
+export interface IFollower {
     id: string;
     name: string;
     job: string;
@@ -32,15 +32,17 @@ export class FollowersHttpSimulator {
         return of(this._followers$.getValue().find(follower => follower.id === id));
     }
 
-    public post(): Observable<IFollower> {
-        const follower = this._randomFollower();
+    public post(follower: IFollower): Observable<IFollower> {
         this._followers$.next([...this._followers$.getValue(), follower]);
         return of(follower);
     }
 
-    public delete(id: string): Observable<{deleted: boolean}> {
-        let followers = this._followers$.getValue();
-        followers = followers.filter(f => f.id !== id);
+    public delete(follower: IFollower): Observable<{deleted: boolean}> {
+        const followers = this._getFollowersWithoutId(follower.id);
+        if (followers.length === this._followers$.getValue().length) {
+            return of({deleted: false});
+        }
+
         this._followers$.next(followers);
         return of({deleted: true});
     }
@@ -50,15 +52,20 @@ export class FollowersHttpSimulator {
         return of({deleted: true});
     }
 
-    // -----------------------------------------------------------------------------------------------------
-    // @ Private methods
-    private _randomFollower() {
+    public randomFollower(): IFollower {
         return {
             id: this.randomStr.uuid(),
             name: this.randomStr.randomName(),
             job: this.randomStr.randomJob(),
             avatar: 'assets/icons/icon-152x152.png',
         };
+    }
+
+    // -----------------------------------------------------------------------------------------------------
+    // @ Private methods
+    private _getFollowersWithoutId(id: string): IFollower[] {
+        const followers = this._followers$.getValue();
+        return  followers.filter(f => f.id !== id);
     }
 }
 

@@ -2,6 +2,7 @@
   --side-nav-width: 4.5rem;
   --sub-nav-width: 380px;
 
-  height: 100%;
+  height: 100vh;
   min-width: calc(100vw - var(--side-nav-width) - var(--sub-nav-width));
+  width: calc(100vw - var(--side-nav-width) - var(--sub-nav-width));
 }
