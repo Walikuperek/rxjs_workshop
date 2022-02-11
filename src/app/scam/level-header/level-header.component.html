@@ -9,7 +9,12 @@
             </ng-template>
         </div>
         <div class="d-flex flex-column">
-            <div class="fs-2 fw-boldest mb-1">RxJS Code Base</div>
+            <ng-container *ngIf="angularLogo; else rxjsTxt">
+                <div class="fs-2 fw-boldest mb-1">Angular Code Base</div>
+            </ng-container>
+            <ng-template #rxjsTxt>
+                <div class="fs-2 fw-boldest mb-1">RxJS Code Base</div>
+            </ng-template>
             <a href="https://github.com/ReactiveX/rxjs"
                target="_blank"
                class="text-gray-400 text-hover-primary fs-6 fw-bold mb-5"
