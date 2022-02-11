@@ -1,24 +1,27 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {FollowersHttpSimulator, IFollower} from '../../fake-backend/followers.backend';
 import {FollowersService} from './followers.service';
 
 @Component({
-    selector: 'app-level-one',
-    templateUrl: './level-one.component.html',
-    styleUrls: ['./level-one.component.scss']
+    selector: 'level-one',
+    templateUrl: './level-one.component.html'
 })
-export class LevelOneComponent implements OnInit {
+export class LevelOneComponent implements OnInit, OnDestroy {
 
     public followers: any[] = [];
 
     constructor(
-        public backend: FollowersHttpSimulator,
+        private _backend: FollowersHttpSimulator,
         private _followersService: FollowersService,
     ) {
     }
 
     ngOnInit(): void {
         this.getFollowers();
+    }
+
+    ngOnDestroy(): void {
+        this._followersService.deleteAll();
     }
 
     // -----------------------------------------------------------------------------------------------------
@@ -36,9 +39,9 @@ export class LevelOneComponent implements OnInit {
     }
 
     public addFollower() {
-        const follower = this.backend.randomFollower();
-        this._followersService.create(follower).subscribe(createdFollower => {
-            console.log('Someone followed @RxJS_official_code_base', createdFollower);
+        const follower = this._backend.randomFollower();
+        this._followersService.create(follower).subscribe(res => {
+            this.followers.push(res);
         });
     }
 
@@ -49,9 +52,17 @@ export class LevelOneComponent implements OnInit {
     }
 
     public deleteAllFollowers() {
-        this._followersService.deleteAll().subscribe(() => {
-            this.followers = [];
-        });
+        if (this.followers.length === 0) {
+            return alert('Brak followersów do usunięcia');
+        }
+        const confirmed = confirm('Czy na pewno chcesz usunąć wszystkich followers?');
+        if (confirmed) {
+            this._followersService.deleteAll().subscribe((res) => {
+                if (res.deleted) {
+                    this.followers = [];
+                }
+            });
+        }
     }
 
 }

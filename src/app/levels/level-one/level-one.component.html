@@ -2,62 +2,44 @@
     <span class="d-flex align-items-center flex-shrink-0 p-3 link-dark text-decoration-none border-bottom">
         <span class="fs-5 fw-semibold">Followers</span>
     </span>
-
     <section class="w-100">
         <div class="card m-2">
             <div class="card-body border-top p-9">
-                <div class="d-flex align-items-start flex-wrap">
-                    <div class="d-flex flex-wrap">
-                        <div class="symbol symbol-125px mb-7 me-7 mx-2 position-relative">
-                            <img src="assets/icons/rxjs_logo.png" alt="image" width="100" height="100" />
-                        </div>
-                        <div class="d-flex flex-column">
-                            <div class="fs-2 fw-boldest mb-1">RxJS Code Base</div>
-                            <a href="https://github.com/ReactiveX/rxjs"
-                               target="_blank"
-                               class="text-gray-400 text-hover-primary fs-6 fw-bold mb-5"
-                            >@RxJS_official_code_base</a>
-                        </div>
-                    </div>
-                    <a href="#" (click)="onFollowClick(); $event.preventDefault(); $event.stopPropagation();" class="btn btn-outline-primary ms-auto mb-7">Follow</a>
-                </div>
-                <div class="row">
-                    <div class="w-100">
-                        <div class="d-flex text-muted fw-boldest fs-4 pb-3">
-                            <span class="flex-grow-1 text-gray-800">Followers</span>
-                            <span class="text-gray-800">86 z 100</span>
-                        </div>
-                        <div class="progress h-8px bg-light-primary mb-3">
-                            <div class="progress-bar bg-primary" role="progressbar" style="width: 86%" aria-valuenow="86"
-                                 aria-valuemin="0" aria-valuemax="100"></div>
-                        </div>
-                        <div class="fw-bold fs-6 text-muted">14 Użytkowników zostało do spełnienia celu</div>
-                    </div>
-                </div>
+                <scam-level-header (followClick)="onFollowClick()"></scam-level-header>
+                <scam-level-progress [count]="followers.length"></scam-level-progress>
             </div>
         </div>
 
         <!--  Followers list  -->
-        <ng-container *ngIf="backend.get() | async as followers">
-            <div class="card m-2 h-full">
-                <div class="card-body">
-                    <div class="card-title d-flex align-items-center"><h5 class="mb-0">Followers list</h5>
-                        <div class="ms-auto text-end">
-                            <a href="#" class="text-sm font-semibold">Unfollow all followers</a></div>
+        <div class="card m-2 h-full">
+            <div class="card-body">
+                <div class="card-title d-flex align-items-center"><h5 class="mb-0">Lista followersów</h5>
+                    <div class="ms-auto text-end">
+                        <a href="#" (click)="deleteAllFollowers(); $event.preventDefault();"
+                           class="text-sm font-semibold">Unfollow all</a></div>
+                </div>
+                <div class="list-group gap-4">
+                    <div *ngIf="followers.length === 0 || !followers"
+                         class="list-group-item d-flex align-items-center border rounded">
+                        Brak followersów
                     </div>
-                    <div class="list-group gap-4">
-                        <div *ngFor="let follower of followers"
-                             class="list-group-item d-flex align-items-center border rounded">
-                            <div class="me-4">
-                                <div class="avatar rounded-circle"><img alt="..." src="{{follower.avatar}}" width="36"></div>
+                    <div *ngFor="let follower of followers"
+                         class="list-group-item d-flex align-items-center border rounded">
+                        <div class="me-4">
+                            <div class="avatar rounded-circle"><img alt="..." src="{{follower.avatar}}" width="36">
                             </div>
-                            <div class="flex-fill"><a href="#" class="d-block h6 font-semibold mb-1">{{follower.name}}</a><span
-                                    class="d-block text-sm text-muted">{{follower.job}}</span></div>
+                        </div>
+                        <div class="flex-fill">
+                            <a href="#"
+                               routerLink="/level-1/follower/{{follower.id}}"
+                               class="d-block h6 font-semibold mb-1">
+                                {{follower.name}}
+                            </a>
+                            <span class="d-block text-sm text-muted">{{follower.job}}</span>
                         </div>
                     </div>
                 </div>
             </div>
-        </ng-container>
+        </div>
     </section>
-
 </article>

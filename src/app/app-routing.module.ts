@@ -21,6 +21,10 @@ const routes: Routes = [
         path: 'level-3-reactive',
         loadChildren: () => import('./levels/level-three-reactive/level-three-reactive.module').then(m => m.LevelThreeReactiveModule)
     },
+    {
+        path: 'solved-level-1',
+        loadChildren: () => import('./solved-levels/solved-level-one/solved-level-one.module').then(m => m.SolvedLevelOneModule)
+    },
 ];
 
 @NgModule({

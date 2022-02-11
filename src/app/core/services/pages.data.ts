@@ -64,7 +64,7 @@ export const PAGES: IPage[] = [
     /** Solved below */
     {
         name: 'Level 1',
-        route: 'solved/level-1',
+        route: 'solved-level-1',
         description: 'Rozwiązanie zadania 1 - Followers',
         isActive: true,
         difficulty: Difficulty.Easy,
@@ -73,7 +73,7 @@ export const PAGES: IPage[] = [
     },
     {
         name: 'Level 2',
-        route: 'solved/level-2',
+        route: 'solved-level-2',
         description: 'Rozwiązanie zadania 2 - CRUD Service',
         isActive: true,
         difficulty: Difficulty.Medium,
@@ -82,7 +82,7 @@ export const PAGES: IPage[] = [
     },
     {
         name: 'Level 2',
-        route: 'solved/level-3',
+        route: 'solved-level-3',
         description: 'Rozwiązanie zadania 3 - Event Bus',
         isActive: true,
         difficulty: Difficulty.Hard,

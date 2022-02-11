@@ -1,17 +1,16 @@
 import {Injectable} from '@angular/core';
 import {FollowersHttpSimulator, IFollower} from '../../fake-backend/followers.backend';
 import {Observable} from 'rxjs';
+import {map} from 'rxjs/operators';
 
-@Injectable({
-    providedIn: 'root'
-})
+@Injectable()
 export class FollowersService {
 
     constructor(private _http: FollowersHttpSimulator) {
     }
 
     public find(): Observable<IFollower[]> {
-        return this._http.get();
+        return this._http.get().pipe(map(res => res.followers));
     }
 
     public findOne(id: string): Observable<IFollower | undefined> {

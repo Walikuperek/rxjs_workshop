@@ -2,6 +2,6 @@
   "extends": ["tslint-angular"],
   "rules": {
     "directive-selector": [true, "attribute", "app", "camelCase"],
-    "component-selector": [true, "element", ["app", "core", "level"], "kebab-case"]
+    "component-selector": [true, "element", ["app", "core", "level", "scam"], "kebab-case"]
   }
 }

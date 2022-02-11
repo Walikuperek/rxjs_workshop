@@ -1,0 +1,18 @@
+<div class="route-window bg-white overflow-auto" *ngIf="isInitialized && follower">
+    <span class="d-flex align-items-center flex-shrink-0 p-3 link-dark text-decoration-none border-bottom">
+        <button mat-icon-button (click)="goBack()"><mat-icon>chevron_left</mat-icon></button>
+        <img src="{{follower.avatar}}" class="rounded-circle me-2" width="40" height="40" alt="{{follower.name}}">
+        <span class="fs-5 fw-semibold">{{follower.name}}</span>
+    </span>
+
+    <div class="card m-2">
+        <div class="card-header d-flex flex-column">
+            <span class="fs-5 fw-semibold">{{follower.name}}</span>
+            <small class="fs-2 fw-light">{{follower.job}}</small>
+        </div>
+
+        <div class="card-footer">
+            <button mat-raised-button color="primary" (click)="unfollow()">Unfollow</button>
+        </div>
+    </div>
+</div>

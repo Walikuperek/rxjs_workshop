@@ -1,0 +1,120 @@
+<article class="route-window bg-white overflow-auto">
+    <span class="d-flex align-items-center flex-shrink-0 p-3 link-dark text-decoration-none border-bottom">
+        <span class="fs-5 fw-semibold">Rozwiązanie zadania 1</span>
+    </span>
+
+    <div class="d-flex flex-column">
+        <h3 class="m-2">Kroki</h3>
+        <p class="text-muted mx-2">
+            11 kroków, aby zmienić zwykłego angulara na RxJS
+        </p>
+
+        <div class="card m-2">
+            <div class="card-header">
+                <h6>Krok 1 (followers-reactive.service.ts) - stwórz service.followers$, który zwróci liste oraz _count$ do liczenia followersów</h6>
+            </div>
+            <pre><code [highlight]="code"></code></pre>
+        </div>
+        <div class="card m-2">
+            <div class="card-header">
+                <h6>Krok 2 (level-one-reactive.component.ts) - stwórz metodę addFollower(), która wygeneruje na fake
+                    backendzie nowego followera</h6>
+            </div>
+            <pre><code [highlight]="code2"></code></pre>
+        </div>
+        <div class="card m-2">
+            <div class="card-header">
+                <h6>Krok 3 (followers-reactive.service.ts) - stwórz service.count$, który zwróci liczbę followersów</h6>
+            </div>
+            <pre><code [highlight]="code4"></code></pre>
+        </div>
+        <div class="card m-2">
+            <div class="card-header">
+                <h6>Krok 4 (followers-reactive.service.ts) - weryfikuj po tym co 'trzyma w tym momencie' service._count$</h6>
+            </div>
+            <pre><code [highlight]="code5"></code></pre>
+        </div>
+        <div class="card m-2">
+            <div class="card-header">
+                <h6>Krok 5 (level-one-reactive.component.ts) - zamień sposób sprawdzania ilości followersów </h6>
+                <p class="text-muted">vm$: nasz nowy pojemnik na dane dla danego widoku</p>
+            </div>
+            <pre><code [highlight]="code6"></code></pre>
+        </div>
+        <div class="card m-2">
+            <div class="card-header">
+                <h6>Krok 6 (level-one-reactive.component.ts) - stwórzmy głowny pojemnik (Observable) na potrzebne nam do
+                    wyświetlenia dane</h6>
+            </div>
+            <pre><code [highlight]="code7"></code></pre>
+        </div>
+        <div class="card m-2">
+            <div class="card-header">
+                <h6>Krok 7 (level-one-reactive.component.ts) - wykorzystajmy operator combineLatest, pomoże on jeżeli
+                    kiedykolwiek pojawią się dane w
+                    przyszłości i odświeży nam vm$ (cała strona ma bazować na tym, więc odświeży nam ją po każdej
+                    zmianie). <br/></h6>
+                <p class="text-muted">combineLatest mówi: jeżeli count$ albo followers$ się zmieni to wywołaj kolejnego
+                    emita danych</p>
+                <p class="text-muted">map mówi: weź count i followersów i wsadź ich do obiektu, pod tymi samymi nazwami,
+                    aby po kropce się do nich odnosić (vm$ | async as vm ... {{vm.count\}\}, etc.)</p>
+            </div>
+            <pre><code [highlight]="code8"></code></pre>
+        </div>
+        <div class="card m-2">
+            <div class="card-header">
+                <h6>Krok 8 (followers-reactive.service.ts) - dodaj zmienną _refreshEvent$ aby potem polegać na akcji odświeżania i ew. renderować znowu followersów</h6>
+                <p class="text-muted">behaviorSubject mówi: mam w sobie od początku false a jak zrobisz
+                    behaviorSubject.next(true) to będę miał true</p>
+            </div>
+            <pre><code [highlight]="code9"></code></pre>
+        </div>
+        <div class="card m-2">
+            <div class="card-header">
+                <h6>Krok 9 (followers-reactive.service.ts) - dodaj do pipe tap operatora aby dodać liczenie
+                    followersów</h6>
+            </div>
+            <pre><code [highlight]="code9"></code></pre>
+        </div>
+        <div class="card m-2">
+            <div class="card-header">
+                <h6>Krok 10 (followers-reactive.service.ts) - dodoj operator merge() aby reagować na eventy refresh</h6>
+                <p class="text-muted">switchMap mówi: jak _refreshEvent$ się odbędzie to wywołaj this._http.get() i przekaż odpowiedź jako wartość teraz w chainie</p>
+            </div>
+            <pre><code [highlight]="code10"></code></pre>
+        </div>
+        <div class="card m-2">
+            <div class="card-header">
+                <h6>Krok 11 (followers-reactive.service.ts) - dodaj wywoływanie odświeżania po każdym nowy wywołaniu</h6>
+                <p class="text-muted">behaviorSubject mówi: mam w sobie od początku false a jak zrobisz
+                    behaviorSubject.next(true) to będę miał true</p>
+            </div>
+            <pre><code [highlight]="code11"></code></pre>
+        </div>
+
+        <!-- Całe pliki -->
+        <hr>
+        <h3 class="m-2">Całe pliki</h3>
+        <p class="text-muted mx-2">
+            Zmiany tylko w 2-óch plikach: level-one-reactive.component.ts i followers-reactive.service.ts
+        </p>
+        
+        <div class="card m-2">
+            <div class="card-header">
+                <h6>Cały kod - followers-reactive.service.ts</h6>
+            </div>
+            <pre><code [highlight]="wholeServiceCode"></code></pre>
+        </div>
+        <div class="card m-2">
+            <div class="card-header">
+                <h6>Cały kod - level-one-reactive.component.ts</h6>
+            </div>
+            <pre><code [highlight]="whileComponentTS"></code></pre>
+        </div>
+    </div>
+
+    <section class="mt-5">
+        <hr>
+        <p class="text-center mb-5">Koniec strony z rozwiązaniem zadania 1</p>
+    </section>
+</article>
