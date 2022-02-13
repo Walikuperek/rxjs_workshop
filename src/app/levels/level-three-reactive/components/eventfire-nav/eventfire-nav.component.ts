@@ -6,7 +6,7 @@ import {Events} from '../../events.enum';
     templateUrl: './eventfire-nav.component.html'
 })
 export class EventfireNavComponent {
-
+    public Events = Events;
     public events: {key: string; value: string}[] = [];
 
     @Output() public fireEvent = new EventEmitter<string>();

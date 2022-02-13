@@ -43,6 +43,7 @@ export class LevelThreeReactiveComponent {
         const confirmed = confirm('Czy na pewno chcesz usunąć wszystkie eventy?');
         if (confirmed) {
             this.eventStore.clearEvents();
+            this._eventBus.emit(Events.EventsDestroyed, {deletedAll: true});
         }
     }
 }
