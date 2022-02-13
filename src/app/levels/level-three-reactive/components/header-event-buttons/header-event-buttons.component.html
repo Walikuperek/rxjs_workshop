@@ -1,0 +1,10 @@
+<nav *ngIf="clearEvents" class="navbar-light navbar w-100">
+    <button class="mx-2 btn btn-outline-danger d-flex align-items-center"
+            matTooltip="Wyczyść event log"
+            (click)="clearEvents.emit()"
+    >
+        <mat-icon>delete</mat-icon>
+    </button>
+    <span style="flex: 1 1 auto;"></span>
+    <level-eventfire-nav (fireEvent)="fireEvent.emit($event)" class="me-1"></level-eventfire-nav>
+</nav>

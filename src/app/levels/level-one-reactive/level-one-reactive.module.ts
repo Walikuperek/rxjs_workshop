@@ -6,6 +6,9 @@ import {LevelOneReactiveComponent} from './level-one-reactive.component';
 import {LevelHeaderModule} from '../../scam/level-header/level-header.module';
 import {LevelProgressModule} from '../../scam/level-progress/level-progress.module';
 import {FollowersReactiveService} from './followers-reactive.service';
+import {MatIconModule} from "@angular/material/icon";
+import {MatTooltipModule} from "@angular/material/tooltip";
+import {CoreModule} from "../../core/core.module";
 
 
 @NgModule({
@@ -16,7 +19,10 @@ import {FollowersReactiveService} from './followers-reactive.service';
         CommonModule,
         LevelOneReactiveRoutingModule,
         LevelHeaderModule,
-        LevelProgressModule
+        LevelProgressModule,
+        MatIconModule,
+        MatTooltipModule,
+        CoreModule
     ],
     providers: [FollowersReactiveService]
 })

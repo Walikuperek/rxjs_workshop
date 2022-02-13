@@ -1,6 +1,6 @@
-import {IPage} from '../models/IPage.interface';
-import {Difficulty} from '../models/Difficulty.enum';
-import {NavPages} from '../models/NavPage.enum';
+import {IPage} from './core/models/IPage.interface';
+import {Difficulty} from './core/models/Difficulty.enum';
+import {NavPages} from './core/models/NavPage.enum';
 
 /**
  * Pages data for every possible page in the app.

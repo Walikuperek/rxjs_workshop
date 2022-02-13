@@ -7,6 +7,8 @@ import {PageService} from './services/page.service';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {RouterModule} from '@angular/router';
 import {RandomStringService} from './services/random-string.service';
+import { AlertComponent } from './components/alert/alert.component';
+import {MatIconModule} from "@angular/material/icon";
 
 const COMPONENTS = [
     SideNavComponent,
@@ -21,15 +23,18 @@ const SERVICES = [
 
 @NgModule({
     declarations: [
-        ...COMPONENTS
+        ...COMPONENTS,
+        AlertComponent
     ],
     imports: [
         CommonModule,
         MatTooltipModule,
-        RouterModule
+        RouterModule,
+        MatIconModule
     ],
     exports: [
-        ...COMPONENTS
+        ...COMPONENTS,
+        AlertComponent
     ],
     providers: [
         ...SERVICES

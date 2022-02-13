@@ -1,7 +1,7 @@
 import {Injectable, OnDestroy} from '@angular/core';
 import {IPage} from '../models/IPage.interface';
 import {BehaviorSubject, merge, Subscription} from 'rxjs';
-import {PAGES} from './pages.data';
+import {PAGES} from '../../pages.data';
 import {distinctUntilChanged, map} from 'rxjs/operators';
 import {NavPages} from '../models/NavPage.enum';
 

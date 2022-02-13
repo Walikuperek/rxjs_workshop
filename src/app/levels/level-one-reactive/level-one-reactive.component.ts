@@ -1,16 +1,18 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {FollowersHttpSimulator, IFollower} from '../../fake-backend/followers.backend';
 import {FollowersReactiveService} from './followers-reactive.service';
 import {combineLatest, Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
+import {AlertType} from '../../core/components/alert/alert.component';
 
 @Component({
     selector: 'level-one-reactive',
     templateUrl: './level-one-reactive.component.html'
 })
-export class LevelOneReactiveComponent implements OnInit, OnDestroy {
+export class LevelOneReactiveComponent implements OnInit {
+    public AlertType = AlertType;
 
-    public vm$: Observable<{count: number; followers: IFollower[]}> | null = null;
+    public vm$: Observable<{ count: number; followers: IFollower[] }> | null = null;
 
     constructor(
         public followersRxService: FollowersReactiveService,
@@ -25,10 +27,6 @@ export class LevelOneReactiveComponent implements OnInit, OnDestroy {
         ]).pipe(
             map(([count, followers]) => ({count, followers}))
         );
-    }
-
-    ngOnDestroy(): void {
-        this.followersRxService.deleteAll();
     }
 
     // -----------------------------------------------------------------------------------------------------

@@ -1,6 +1,7 @@
 import {BehaviorSubject, Observable} from 'rxjs';
 import {RandomStringService} from '../core/services/random-string.service';
 import {Injectable} from '@angular/core';
+import {completedObservable} from './completeObservable';
 
 export interface IFollower {
     id: string;
@@ -26,33 +27,33 @@ export class FollowersHttpSimulator {
     // @ Public API
     public get(): Observable<{count: number; followers: IFollower[]}> {
         const followers = this._followers$.getValue();
-        return this._completedObservable({count: followers.length, followers});
+        return completedObservable({count: followers.length, followers});
     }
 
     public getOne(id: string): Observable<IFollower | undefined> {
-        return this._completedObservable(
+        return completedObservable(
             this._followers$.getValue().find(follower => follower.id === id)
         );
     }
 
     public post(follower: IFollower): Observable<IFollower> {
         this._followers$.next([...this._followers$.getValue(), follower]);
-        return this._completedObservable(follower);
+        return completedObservable(follower);
     }
 
     public delete(follower: IFollower): Observable<{ deleted: boolean }> {
         const followers = this._getFollowersWithoutId(follower.id);
         if (followers.length === this._followers$.getValue().length) {
-            return this._completedObservable({deleted: false});
+            return completedObservable({deleted: false});
         }
 
         this._followers$.next(followers);
-        return this._completedObservable({deleted: true});
+        return completedObservable({deleted: true});
     }
 
     public deleteAll(): Observable<{ deleted: boolean }> {
         this._followers$.next([]);
-        return this._completedObservable({deleted: true});
+        return completedObservable({deleted: true});
     }
 
     public randomFollower(): IFollower {
@@ -68,14 +69,6 @@ export class FollowersHttpSimulator {
     // @ Private methods
     private _getFollowersWithoutId(id: string): IFollower[] {
         return this._followers$.getValue().filter(f => f.id !== id);
-    }
-
-    private _completedObservable<T>(value: T): Observable<T> {
-        return new Observable<T>(observer => {
-            observer.next(value);
-            console.warn('Simulated http request completed', value);
-            observer.complete();
-        });
     }
 }
 

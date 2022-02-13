@@ -1,4 +1,5 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {AlertType} from '../../core/components/alert/alert.component';
 import {FollowersHttpSimulator, IFollower} from '../../fake-backend/followers.backend';
 import {FollowersService} from './followers.service';
 
@@ -6,9 +7,9 @@ import {FollowersService} from './followers.service';
     selector: 'level-one',
     templateUrl: './level-one.component.html'
 })
-export class LevelOneComponent implements OnInit, OnDestroy {
-
-    public followers: any[] = [];
+export class LevelOneComponent implements OnInit {
+    public AlertType = AlertType;
+    public followers: IFollower[] = [];
 
     constructor(
         private _backend: FollowersHttpSimulator,
@@ -18,10 +19,6 @@ export class LevelOneComponent implements OnInit, OnDestroy {
 
     ngOnInit(): void {
         this.getFollowers();
-    }
-
-    ngOnDestroy(): void {
-        this._followersService.deleteAll();
     }
 
     // -----------------------------------------------------------------------------------------------------

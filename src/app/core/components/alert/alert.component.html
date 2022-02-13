@@ -1,0 +1,18 @@
+<ng-container *ngIf="type === AlertType.Light">
+    <div class="alert alert-light m-2 d-flex" role="alert">
+        <div class="d-flex flex-column">
+            <small class="text-muted d-flex align-items-center">
+                <mat-icon class="me-2" matTooltip="Lokalizacja tego widoku">folder_open</mat-icon>&nbsp;{{message}}
+            </small>
+        </div>
+    </div>
+</ng-container>
+<ng-container *ngIf="type === AlertType.Info">
+    <div class="alert alert-info m-2 d-flex" role="alert">
+        <mat-icon>info</mat-icon>&nbsp;
+        <div class="d-flex flex-column">
+            <span>{{message}}</span>
+        </div>
+    </div>
+</ng-container>
+

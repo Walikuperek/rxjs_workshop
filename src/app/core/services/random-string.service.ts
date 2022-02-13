@@ -1,5 +1,4 @@
 import {Injectable} from '@angular/core';
-import {BehaviorSubject, Observable, of} from 'rxjs';
 
 const RANDOM_NAMES = [
     'Isaiah Harrell',
