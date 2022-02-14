@@ -2,7 +2,7 @@
     <div class="d-flex align-items-center">
         <button class="me-2 btn btn-outline-secondary d-flex align-items-center"
                 matTooltip="Dodaj nowy event"
-                (click)="fireEvent.emit(Events.ContentAdded)">
+                (click)="fireContentAddedEvent.emit(Events.ContentAdded)">
             <small>Event</small>&nbsp;ContentAdded
             <mat-icon>add</mat-icon>&nbsp;
         </button>

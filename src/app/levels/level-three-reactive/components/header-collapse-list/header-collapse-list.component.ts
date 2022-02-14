@@ -12,15 +12,12 @@ export class HeaderCollapseListComponent implements OnInit {
     public Events = Events;
     private _events: IEvent[] = [];
 
-    @Input() set events(value: IEvent[]) {
-        this._events = value;
-    }
-
-    @Output() public fireEvent: EventEmitter<Events> = new EventEmitter();
-
     get events(): IEvent[] {
         return this._events.filter(event => event.type === Events.ContentAdded);
     }
+
+    @Input() set events(value: IEvent[]) { this._events = value; }
+    @Output() public fireContentAddedEvent: EventEmitter<Events> = new EventEmitter();
 
     constructor(
         private _eventStore: EventStoreService,
@@ -28,10 +25,10 @@ export class HeaderCollapseListComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.listenToContentRemoved();
+        this._listenToContentRemoved();
     }
 
-    listenToContentRemoved() {
+    private _listenToContentRemoved() {
         this._eventBus.on(Events.ContentRemoved, (event: IEvent) => {
             this._eventStore.removeLastEvent(Events.ContentAdded);
         });

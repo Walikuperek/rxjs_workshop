@@ -1,1 +1,64 @@
-<p>level-two-reactive works!</p>
+<article class="route-window bg-white overflow-auto">
+    <span class="d-flex align-items-center flex-shrink-0 p-3 link-dark text-decoration-none border-bottom">
+        <span class="fs-5 fw-semibold">Games CRUD</span>
+        <span style="flex: 1 1 auto;"></span>
+    </span>
+
+    <header class="p-3 bg-light text-white" style="position: sticky; top: 0; z-index: 99;">
+        <div class="container">
+            <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+                    <span matTooltip="Twoje wybrane gry"
+                          class="badge badge-lg rounded-pill bg-primary d-flex align-items-center me-3"
+                          style="transform: scale(1.4)">
+                        <mat-icon class="me-2">whatshot</mat-icon>
+                        {{addedGames.length}}
+                    </span>
+
+                <span matTooltip="Łączna liczba gier"
+                      class="badge badge-lg rounded-pill bg-info d-flex align-items-center" style="transform: scale(1)">
+                        <mat-icon class="me-2">videogame_asset</mat-icon>
+                    {{games.rows.length}}
+                    </span>
+
+                <span style="flex: 1 1 auto;"></span>
+
+                <input [(ngModel)]="criteria"
+                       type="text" class="form-control form-control-dark" placeholder="Szukaj gry..."
+                       (keyup)="filterGames($event)">
+            </div>
+        </div>
+    </header>
+    <div class="container">
+        <div class="d-flex flex-wrap align-items-md-stretch mt-2">
+            <ng-container *ngFor="let game of games.rows; let i = index">
+                <ng-container *ngIf="i % 2 === 0; else oddIndex">
+                    <div class="col-md-6 p-1">
+                        <div class="p-5 text-white bg-dark rounded-3">
+                            <h2>{{game.title}}</h2>
+                            <p>{{game.short_description}}</p>
+                            <button class="btn btn-primary mt-2 me-2" type="button" (click)="addGame(game)">Dodaj grę
+                            </button>
+                            <a href="{{game.game_url}}">
+                                <button class="btn btn-outline-light mt-2" type="button">Strona gry</button>
+                            </a>
+                        </div>
+                    </div>
+                </ng-container>
+                <ng-template #oddIndex>
+                    <div class="col-md-6 p-1">
+                        <div class="p-5 bg-light border rounded-3">
+                            <h2>{{game.title}}</h2>
+                            <p>{{game.short_description}}</p>
+                            <button class="btn btn-warning mt-2 me-2" type="button" (click)="addGame(game)">Dodaj grę
+                            </button>
+                            <a href="{{game.game_url}}">
+                                <button class="btn btn-outline-dark mt-2" type="button">Strona gry</button>
+                            </a>
+                        </div>
+                    </div>
+                </ng-template>
+            </ng-container>
+        </div>
+    </div>
+
+</article>

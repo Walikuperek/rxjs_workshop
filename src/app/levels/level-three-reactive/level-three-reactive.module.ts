@@ -10,9 +10,9 @@ import {MatTooltipModule} from '@angular/material/tooltip';
 import {CoreModule} from '../../core/core.module';
 import {EventfireNavComponent} from './components/eventfire-nav/eventfire-nav.component';
 import {EventStoreService} from './event-store.service';
-import { HeaderCollapseListComponent } from './components/header-collapse-list/header-collapse-list.component';
-import { HeaderEventButtonsComponent } from './components/header-event-buttons/header-event-buttons.component';
-import {ContentAuthorsCounterModule} from "./modules/content-authors-counter/content-authors-counter.module";
+import {HeaderCollapseListComponent} from './components/header-collapse-list/header-collapse-list.component';
+import {HeaderEventButtonsComponent} from './components/header-event-buttons/header-event-buttons.component';
+import {ContentAuthorsCounterModule} from './modules/content-authors-counter/content-authors-counter.module';
 
 
 @NgModule({
