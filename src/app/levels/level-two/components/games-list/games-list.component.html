@@ -1,0 +1,30 @@
+<div class="d-flex flex-wrap align-items-md-stretch mt-2">
+    <ng-container *ngFor="let game of games; let i = index">
+        <ng-container *ngIf="i % 2 === 0; else lightBackgroundCard">
+            <div class="col-md-6 p-1">
+                <div class="p-5 text-white bg-dark rounded-3">
+                    <h2>{{game.title}}</h2>
+                    <p>{{game.short_description}}</p>
+                    <button class="btn btn-primary mt-2 me-2" type="button" (click)="addGame.emit(game)">Dodaj grę
+                    </button>
+                    <a href="{{game.game_url}}">
+                        <button class="btn btn-outline-light mt-2" type="button">Strona gry</button>
+                    </a>
+                </div>
+            </div>
+        </ng-container>
+        <ng-template #lightBackgroundCard>
+            <div class="col-md-6 p-1">
+                <div class="p-5 bg-light border rounded-3">
+                    <h2>{{game.title}}</h2>
+                    <p>{{game.short_description}}</p>
+                    <button class="btn btn-warning mt-2 me-2" type="button" (click)="addGame.emit(game)">Dodaj grę
+                    </button>
+                    <a href="{{game.game_url}}">
+                        <button class="btn btn-outline-dark mt-2" type="button">Strona gry</button>
+                    </a>
+                </div>
+            </div>
+        </ng-template>
+    </ng-container>
+</div>

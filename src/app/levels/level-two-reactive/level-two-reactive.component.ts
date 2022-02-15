@@ -1,38 +1,38 @@
-import {Component, OnInit} from '@angular/core';
-import {GAMES_LIST} from '../../fake-backend/game-list';
+import {Component} from '@angular/core';
+import {IGame} from '../../fake-backend/game-list';
+import {AlertType} from '../../scam/alert/alert/alert.component';
+import {GamesService} from './games.service';
+import {AddedGamesService} from './added-games.service';
+import {combineLatest, Observable} from 'rxjs';
+import {map} from 'rxjs/operators';
+
+interface ILevelTwoReactive {
+  games: IGame[];
+  addedGames: IGame[];
+}
 
 @Component({
     selector: 'app-level-two-reactive',
     templateUrl: './level-two-reactive.component.html'
 })
-export class LevelTwoReactiveComponent implements OnInit {
-    public criteria = '';
-    public games = GAMES_LIST;
-    public addedGames: any[] = [];
+export class LevelTwoReactiveComponent {
+    public AlertType = AlertType;
 
-    constructor() {
+    public vm$: Observable<ILevelTwoReactive>;
+
+    constructor(
+        public gamesService: GamesService,
+        public addedGamesService: AddedGamesService
+    ) {
+        this.vm$ = combineLatest([
+            this.gamesService.games$,
+            this.addedGamesService.addedGames$
+        ]).pipe(
+            map(([games, addedGames]) => {
+                return {
+                    games,
+                    addedGames
+                };
+        }));
     }
-
-    ngOnInit(): void {
-    }
-
-    public addGame(game: any): void {
-        console.log(game);
-        if (this.addedGames.indexOf(game) === -1) {
-            this.addedGames.push(game);
-        } else {
-            alert('Gra została już dodana');
-        }
-    }
-
-    public filterGames(event: any): void {
-        this.games.rows = GAMES_LIST.rows;
-        if (event.target.value === '') {
-            console.log(event.target.value);
-        } else {
-            this.games.rows = this.games.rows.filter(game => game.title.toLowerCase().includes(this.criteria.toLowerCase()));
-        }
-        this.games.count = this.games.rows.length;
-    }
-
 }

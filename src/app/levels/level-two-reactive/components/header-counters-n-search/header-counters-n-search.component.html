@@ -1,0 +1,27 @@
+<div class="container">
+    <div class="d-flex align-items-center">
+        <span matTooltip="Twoje wybrane gry"
+              (click)="toggleAddedGamesList.emit()"
+              class="badge badge-lg rounded-pill bg-primary d-flex align-items-center me-3 hover--pointer"
+              style="transform: scale(1.4)"
+        >
+            <mat-icon class="me-2">whatshot</mat-icon>
+            {{addedGamesLength}}
+        </span>
+
+        <span matTooltip="Łączna liczba gier"
+              class="badge badge-lg rounded-pill bg-info d-flex align-items-center me-2"
+              style="transform: scale(1)"
+        >
+            <mat-icon class="me-2">videogame_asset</mat-icon>
+            {{gamesLength}}
+        </span>
+
+        <span style="flex: 1 1 auto;"></span>
+
+        <input [(ngModel)]="criteria"
+               type="text" class="form-control form-control-dark" placeholder="Szukaj gry..."
+               (keyup)="search.emit(criteria)"
+        >
+    </div>
+</div>

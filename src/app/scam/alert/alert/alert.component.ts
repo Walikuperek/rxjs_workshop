@@ -6,7 +6,7 @@ export enum AlertType {
 }
 
 @Component({
-  selector: 'core-alert',
+  selector: 'scam-alert',
   templateUrl: './alert.component.html'
 })
 export class AlertComponent {

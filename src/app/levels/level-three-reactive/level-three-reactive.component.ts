@@ -1,9 +1,9 @@
 import {Component} from '@angular/core';
 import {EventBusService} from './event-bus.service';
 import {Events} from './events.enum';
-import {AlertType} from '../../core/components/alert/alert.component';
 import {EventStoreService} from './event-store.service';
 import {RandomStringService} from '../../core/services/random-string.service';
+import {AlertType} from '../../scam/alert/alert/alert.component';
 
 @Component({
     selector: 'app-level-three-reactive',

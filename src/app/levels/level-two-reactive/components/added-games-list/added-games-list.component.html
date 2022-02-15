@@ -1,0 +1,11 @@
+<ul class="list-group">
+    <li *ngIf="addedGames.length === 0"><span class="text-muted">Brak dodanych gier</span></li>
+    <li *ngFor="let game of addedGames; let i = index" class="list-group-item">
+        <button mat-icon-button
+                (click)="removeGame.emit(game)"
+                class="btn btn-sm btn-danger float-right">
+            <mat-icon>delete</mat-icon>
+        </button>
+        {{ game.title }}
+    </li>
+</ul>

@@ -5,4 +5,4 @@ export const completedObservable = <T>(value: T): Observable<T> => {
         observer.next(value);
         observer.complete();
     });
-}
+};

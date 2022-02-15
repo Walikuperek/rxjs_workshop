@@ -5,8 +5,8 @@
         <level-content-authors-counter></level-content-authors-counter>
     </span>
 
-    <core-alert [type]="AlertType.Light" [message]="'src/app/levels/level-three-reactive'"></core-alert>
-    <core-alert [type]="AlertType.Info" [message]="'Wykorzystaj RxJS do tworzenia i pokazywania eventów.'"></core-alert>
+    <scam-alert [type]="AlertType.Light" [message]="'src/app/levels/level-three-reactive'"></scam-alert>
+    <scam-alert [type]="AlertType.Info" [message]="'Wykorzystaj RxJS do tworzenia i pokazywania eventów.'"></scam-alert>
 
     <ng-container *ngIf="eventStore.events$ | async as events">
         <header class="border-bottom py-2 d-flex align-items-center">
@@ -27,8 +27,8 @@
             <div class="d-grid gap-3" style="grid-template-columns: 1fr 2fr; min-height: 300px;">
                 <div class="bg-light border rounded-3 p-2">
                     <div class="d-flex flex-column">
-                        <core-alert *ngIf="events.length === 0" [type]="AlertType.Light"
-                                    [message]="'Brak eventów.'"></core-alert>
+                        <scam-alert *ngIf="events.length === 0" [type]="AlertType.Light"
+                                    [message]="'Brak eventów.'"></scam-alert>
                         <span *ngFor="let event of events">{{event.createdAt | date: 'dd/MM/yyyy - HH:mm:ss.SSS'}}</span>
                     </div>
                 </div>

@@ -3,8 +3,8 @@
         <span class="fs-5 fw-semibold">Followers</span>
     </span>
     <section class="w-100">
-        <core-alert [type]="AlertType.Light" [message]="'src/app/levels/level-one-reactive'"></core-alert>
-        <core-alert [type]="AlertType.Info" [message]="'Obsłuż followersów z użyciem RxJS.'"></core-alert>
+        <scam-alert [type]="AlertType.Light" [message]="'src/app/levels/level-one-reactive'"></scam-alert>
+        <scam-alert [type]="AlertType.Info" [message]="'Obsłuż followersów z użyciem RxJS.'"></scam-alert>
 
         <ng-container *ngIf="vm$ | async as vm">
             <div class="card m-2">

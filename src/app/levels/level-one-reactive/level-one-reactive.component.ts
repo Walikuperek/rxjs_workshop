@@ -3,7 +3,7 @@ import {FollowersHttpSimulator, IFollower} from '../../fake-backend/followers.ba
 import {FollowersReactiveService} from './followers-reactive.service';
 import {combineLatest, Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
-import {AlertType} from '../../core/components/alert/alert.component';
+import {AlertType} from '../../scam/alert/alert/alert.component';
 
 @Component({
     selector: 'level-one-reactive',

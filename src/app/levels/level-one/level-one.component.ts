@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {AlertType} from '../../core/components/alert/alert.component';
+import {AlertType} from '../../scam/alert/alert/alert.component';
 import {FollowersHttpSimulator, IFollower} from '../../fake-backend/followers.backend';
 import {FollowersService} from './followers.service';
 

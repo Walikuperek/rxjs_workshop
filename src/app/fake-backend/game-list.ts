@@ -1,6 +1,23 @@
-export const GAMES_LIST = {
-        'count': 141,
-        'rows': [
+export interface IGame {
+    id: number;
+    game_id: number;
+    title: string;
+    thumbnail: string;
+    short_description: string;
+    game_url: string;
+    genre: string;
+    platform: string;
+    publisher: string;
+    developer: string;
+    release_date: string;
+    freetogame_profile_url: string;
+    createdAt: Date | string;
+    updatedAt: Date | string;
+}
+
+export const GAMES_LIST: {count: number; rows: IGame[]} = {
+        count: 141,
+        rows: [
             {
                 'id': 256,
                 'game_id': 241,
