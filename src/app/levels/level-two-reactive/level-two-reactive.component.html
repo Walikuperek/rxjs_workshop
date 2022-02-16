@@ -14,10 +14,8 @@
     <span style="flex: 1 1 auto"></span>
   </span>
 
-  <scam-alert
-    [type]="AlertType.Light"
-    [message]="'src/app/levels/level-two'"
-  ></scam-alert>
+  <scam-alert [type]="AlertType.Light" [message]="'src/app/levels/level-two-reactive'"></scam-alert>
+  <scam-alert [type]="AlertType.Info" [message]="'Dodawaj, usuwaj i pokazuj gry za pomocą RxJS, a przy okazji ulżyj serwerowi.'"></scam-alert>
 
   <ng-container *ngIf="vm$ | async as vm">
     <header
