@@ -1,33 +1,58 @@
-import {Component} from '@angular/core';
-import {GAMES_LIST, IGame} from '../../fake-backend/game-list';
-import {AlertType} from '../../scam/alert/alert/alert.component';
+import { Component, OnInit } from '@angular/core';
+import { IGame } from '../../fake-backend/game-list';
+import { AlertType } from '../../scam/alert/alert/alert.component';
+import { GamesService } from './games.service';
+import { AddedGamesService } from './added-games.service';
 
 @Component({
-    selector: 'app-level-two',
-    templateUrl: './level-two.component.html'
+  selector: 'app-level-two',
+  templateUrl: './level-two.component.html',
 })
-export class LevelTwoComponent {
-    public AlertType = AlertType;
-    public games = GAMES_LIST;
-    public addedGames: IGame[] = [];
+export class LevelTwoComponent implements OnInit {
+  public AlertType = AlertType;
+  public games: { count: number; rows: IGame[] } = { count: 0, rows: [] };
+  public addedGames: IGame[] = [];
 
-    public onCriteriaChange($event: any): void {
-        this.games = {...GAMES_LIST};
-        this.games.rows = this.games.rows.filter(game => {
-            return game.title.toLowerCase().includes($event.toLowerCase());
-        });
-        this.games.count = this.games.rows.length;
-    }
+  constructor(
+    private _addedGamesService: AddedGamesService,
+    private _gamesService: GamesService
+  ) {}
 
-    public onRemoveGame(gameToBeRemoved: IGame): void {
-        this.addedGames = this.addedGames.filter(game => game !== gameToBeRemoved);
-    }
+  ngOnInit(): void {
+    this._gamesService
+      .getGames()
+      .subscribe((games) => this._updateGames(games));
 
-    public onAddGame(game: IGame): void {
-        if (this.addedGames.indexOf(game) === -1) {
-            this.addedGames.push(game);
-        } else {
-            alert('Gra została już dodana');
-        }
-    }
+    this._addedGamesService
+      .getAddedGames()
+      .subscribe((addedGames) => (this.addedGames = addedGames));
+  }
+
+  public onCriteriaChange($event: string): void {
+    this._gamesService
+      .filter($event)
+      .subscribe((games) => this._updateGames(games));
+  }
+
+  public onRemoveGame(gameToBeRemoved: IGame): void {
+    this._addedGamesService.removeGame(gameToBeRemoved).subscribe((res) => {
+      if (res.deleted) {
+        this.addedGames = this.addedGames.filter(
+          (game) => game !== gameToBeRemoved
+        );
+      }
+    });
+  }
+
+  public onAddGame(game: IGame): void {
+    this._addedGamesService.addGame(game).subscribe(
+      (addedGame) => this.addedGames.push(addedGame),
+      (error) => alert(error)
+    );
+  }
+
+  private _updateGames(games: IGame[]): void {
+    this.games.rows = games;
+    this.games.count = games.length;
+  }
 }

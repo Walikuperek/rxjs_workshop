@@ -1,5 +1,5 @@
 export enum Events {
-    ContentAdded = 'ContentAdded',
-    ContentRemoved = 'ContentRemoved',
-    EventsDestroyed = 'EventsDestroyed',
+  ContentAdded = 'ContentAdded',
+  ContentRemoved = 'ContentRemoved',
+  EventsDestroyed = 'EventsDestroyed',
 }

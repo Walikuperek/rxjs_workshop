@@ -1,4 +1,4 @@
 export enum NavPages {
-    Levels = 'Levels',
-    Solved = 'Solved',
+  Levels = 'Levels',
+  Solved = 'Solved',
 }

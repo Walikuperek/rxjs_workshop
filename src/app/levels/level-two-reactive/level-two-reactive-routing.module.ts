@@ -6,6 +6,6 @@ const routes: Routes = [{ path: '', component: LevelTwoReactiveComponent }];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class LevelTwoReactiveRoutingModule { }
+export class LevelTwoReactiveRoutingModule {}

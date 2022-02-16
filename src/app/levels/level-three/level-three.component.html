@@ -1,1 +1,73 @@
-<p>level-three works!</p>
+<article class="route-window bg-white overflow-auto">
+  <span
+          class="d-flex align-items-center flex-shrink-0 p-3 link-dark text-decoration-none border-bottom "
+  >
+    <span class="fs-5 fw-semibold">Znane możliwości komunikacji w Angular</span>
+    <span style="flex: 1 1 auto"></span>
+  </span>
+
+    <scam-alert [type]="AlertType.Light" [message]="'src/app/levels/level-three-reactive'"></scam-alert>
+    <scam-alert [type]="AlertType.Info" [message]="'Poniżej znajdziesz standardowe sposoby komunikacji w Angular.'"></scam-alert>
+
+    <section class="container mt-4">
+        <header>
+            <h2>Możliwości</h2>
+        </header>
+
+        <div class="card m-2 mb-4 p-2">
+            <div class="card-body">
+                <p>Jakie mamy możliwości dla relacji <b>komponent_dziecko-rodzic</b>?</p>
+                <ol>
+                    <li>@Input() - komunikacja z rodzica do komponentu</li>
+                    <li>@Output() - emitowanie eventów z komponentu do rodzica</li>
+                </ol>
+            </div>
+        </div>
+
+        <div class="card m-2 mb-4 p-2">
+            <div class="card-body">
+                <p>Możliwości dla relacji <b>niezwiązanych ze sobą komponentów i modułów</b>?</p>
+                <ol>
+                    <li>Globalny Service, który trzyma np. arraya z Użytkownikami, z którego dziecko oraz rodzic czerpią dane (jakiś CRUD service frontendowy)</li>
+                    <li>Service wew. modułu rodzica albo jeszcze wyżej, który robi to samo co globalny serwis powyżej</li>
+                    <li>Jakieś serwerowe metody (CRUD jakiś po prostu)</li>
+                    <li>Cuda pokroju Firebase, a dokładniej mówiąc WebSocketów, czy starszej technologii Http Long Polling (no ale to serwerowe metody nadal)</li>
+                    <li>ew. jeszcze SSE, server side events i reagowanie na nie ...nadal serwerowo</li>
+                </ol>
+            </div>
+        </div>
+
+        <h2>Zadanie 3 Event Bus</h2>
+        <div class="border-bottom"></div>
+
+        <scam-alert [type]="AlertType.Info" [message]="'Czego nas może nauczyć z zakresu RxJS zadanie 3 Event Bus?'"></scam-alert>
+        <scam-alert [type]="AlertType.Light" [message]="'level-three-reactive/event-bus.service.ts'"></scam-alert>
+
+        <div class="card m-2 p-2 mt-4 mb-4">
+            <div class="card-body">
+                <p>Event Bus, służy do komunikacji pomiędzy komponentami albo serwisami czy jakimiś klasami</p>
+                <p class="text-muted">Zobaczymy siłę RxJS, aby ułatwić np. sprawę komunikacji z mocno zagnieżdzonymi komponentami</p>
+
+                <p class="mt-2">Jak w prosty sposób zarządzać i dodawać nowe eventy</p>
+                <p class="text-muted">Enum, który trzyma listę możliwych eventów</p>
+
+                <p class="mt-2">Typowanie</p>
+                <p class="text-muted">Związane z TS: Napiszemy generyki aby móc utrzymać typowanie dla EventBusa i zaspokoić kompilator TSa</p>
+            </div>
+        </div>
+
+        <scam-alert [type]="AlertType.Light" [message]="'level-three-reactive/event-store.service.ts'"></scam-alert>
+
+        <div class="card m-2 p-2">
+            <div class="card-body">
+                <p>Event Store to odwzorowanie bazy która trzyma eventy, produkcyjny odpowiednik to np. EventStoreDB</p>
+                <p class="text-muted">Służy jako baza, musimy gdzieś te eventy zapisać ;)</p>
+                <p class="text-muted">To zadanie jest zainspirowane Event Driven Design, dla zainteresowanych polecam wygooglować Event Sourcing do czego mocno służy EventStoreDB</p>
+            </div>
+        </div>
+    </section>
+
+    <footer class="mt-5 border-top d-flex align-items-center justify-content-center" style="min-height: 5em;">
+        <a href="#" routerLink="/level-3-reactive">Przejdź do zadania 3-ego</a>
+    </footer>
+</article>

@@ -1,8 +1,8 @@
-@import "styles/sidenav";
-@import "styles/route-window";
-@import "styles/hover";
+@import 'styles/sidenav';
+@import 'styles/route-window';
+@import 'styles/hover';
 
-// Highlight.js
+// Highlight.js (code highlighting)
 @import '~highlight.js/styles/github.css';
 
 body {
@@ -11,13 +11,13 @@ body {
   overflow: hidden;
   width: 100%;
   margin: 0;
-  font-family: Roboto, "Helvetica Neue", sans-serif;
+  font-family: Roboto, 'Helvetica Neue', sans-serif;
 }
 
 html {
   height: 100%;
   width: 100%;
-  font-family: "Roboto", sans-serif;
+  font-family: 'Roboto', sans-serif;
   font-weight: 300;
 }
 

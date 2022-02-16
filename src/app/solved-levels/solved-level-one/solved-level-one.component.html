@@ -1,32 +1,44 @@
 <article class="route-window bg-white overflow-auto">
-    <span class="d-flex align-items-center flex-shrink-0 p-3 link-dark text-decoration-none border-bottom">
-        <span class="fs-5 fw-semibold">Rozwiązanie zadania 1</span>
-    </span>
+  <span
+    class="
+      d-flex
+      align-items-center
+      flex-shrink-0
+      p-3
+      link-dark
+      text-decoration-none
+      border-bottom
+    "
+  >
+    <span class="fs-5 fw-semibold">Rozwiązanie zadania 1</span>
+  </span>
 
-    <div class="d-flex flex-column">
+  <div class="d-flex flex-column">
+    <h3 class="m-2">Całe pliki</h3>
+    <p class="text-muted mx-2">
+      Zmiany tylko w 3-ech plikach: level-one-reactive.component.ts/html i
+      followers-reactive.service.ts
+    </p>
 
-        <h3 class="m-2">Całe pliki</h3>
-        <p class="text-muted mx-2">
-            Zmiany tylko w 3-ech plikach: level-one-reactive.component.ts/html i followers-reactive.service.ts
-        </p>
+    <ng-container *ngFor="let code of codeFiles">
+      <div class="alert alert-info m-2 d-flex" role="alert">
+        <mat-icon>info</mat-icon>&nbsp;plik /levels/level-one-reactive/{{
+          code.name
+        }}
+      </div>
 
-        <ng-container *ngFor="let code of codeFiles">
-            <div class="alert alert-info m-2 d-flex" role="alert">
-                <mat-icon>info</mat-icon>&nbsp;plik /levels/level-one-reactive/{{code.name}}
-            </div>
+      <div class="card m-2">
+        <div class="card-header">
+          <h6>Cały kod - {{ code.name }}</h6>
+        </div>
+        <pre><code [highlight]="code.code"></code></pre>
+      </div>
+    </ng-container>
+  </div>
 
-            <div class="card m-2">
-                <div class="card-header">
-                    <h6>Cały kod - {{code.name}}</h6>
-                </div>
-                <pre><code [highlight]="code.code"></code></pre>
-            </div>
-        </ng-container>
-    </div>
-
-    <section class="mt-5">
-        <hr>
-        <p class="text-center mb-5">Koniec strony z rozwiązaniem zadania 1</p>
-        <p class="text-center mb-5">Angular version: {{version.full}}</p>
-    </section>
+  <section class="mt-5">
+    <hr />
+    <p class="text-center mb-5">Koniec strony z rozwiązaniem zadania 1</p>
+    <p class="text-center mb-5">Angular version: {{ version.full }}</p>
+  </section>
 </article>

@@ -1,16 +1,16 @@
-<span class="badge p-2 px-3 rounded-pill bg-warning" style="font-size: 1.05em;">
-    <ng-container *ngIf="count < 0; else countAboveZero">
-        0&nbsp;<span class="text-muted">Autorów</span>
+<span class="badge p-2 px-3 rounded-pill bg-warning" style="font-size: 1.05em">
+  <ng-container *ngIf="count < 0; else countAboveZero">
+    0&nbsp;<span class="text-muted">Autorów</span>
+  </ng-container>
+
+  <ng-template #countAboveZero>
+    {{ count }}&nbsp;
+    <ng-container *ngIf="count === 1; else plural">
+      <span class="text-muted">Autor</span>
     </ng-container>
 
-    <ng-template #countAboveZero>
-        {{count}}&nbsp;
-        <ng-container *ngIf="count === 1; else plural">
-            <span class="text-muted">Autor</span>
-        </ng-container>
-
-        <ng-template #plural>
-            <span class="text-muted">Autorów</span>
-        </ng-template>
+    <ng-template #plural>
+      <span class="text-muted">Autorów</span>
     </ng-template>
+  </ng-template>
 </span>

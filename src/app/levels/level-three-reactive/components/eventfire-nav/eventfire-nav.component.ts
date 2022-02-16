@@ -1,24 +1,23 @@
-import {Component, EventEmitter, Output} from '@angular/core';
-import {Events} from '../../events.enum';
+import { Component, EventEmitter, Output } from '@angular/core';
+import { Events } from '../../events.enum';
 
 @Component({
-    selector: 'level-eventfire-nav',
-    templateUrl: './eventfire-nav.component.html'
+  selector: 'level-eventfire-nav',
+  templateUrl: './eventfire-nav.component.html',
 })
 export class EventfireNavComponent {
-    public Events = Events;
-    public events: {key: string; value: string}[] = [];
+  public Events = Events;
+  public events: { key: string; value: string }[] = [];
 
-    @Output() public fireEvent = new EventEmitter<string>();
+  @Output() public fireEvent = new EventEmitter<string>();
 
-    constructor() {
-        Object.entries(Events).forEach(([key, value]) => {
-            this.events.push({ key, value });
-        });
-    }
+  constructor() {
+    Object.entries(Events).forEach(([key, value]) => {
+      this.events.push({ key, value });
+    });
+  }
 
-    fire($event: string) {
-        this.fireEvent.emit($event);
-    }
-
+  fire($event: string) {
+    this.fireEvent.emit($event);
+  }
 }

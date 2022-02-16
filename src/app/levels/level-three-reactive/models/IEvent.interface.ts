@@ -1,7 +1,7 @@
-import {Events} from '../events.enum';
+import { Events } from '../events.enum';
 
 export interface IEvent {
-    type: Events;
-    data: any;
-    createdAt: Date;
+  type: Events;
+  data: any;
+  createdAt: Date;
 }

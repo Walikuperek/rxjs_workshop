@@ -1,9 +1,10 @@
 <nav class="d-flex align-items-center">
-    <button [ngClass]="{'disabled': event.value === Events.EventsDestroyed}"
-            class="btn btn-outline-primary me-2 d-flex align-items-center"
-            *ngFor="let event of events"
-            (click)="fire(event.value)"
-    >
-        <mat-icon class="me-2">send</mat-icon>{{event.key}}
-    </button>
+  <button
+    [ngClass]="{ disabled: event.value === Events.EventsDestroyed }"
+    class="btn btn-outline-primary me-2 d-flex align-items-center"
+    *ngFor="let event of events"
+    (click)="fire(event.value)"
+  >
+    <mat-icon class="me-2">send</mat-icon>{{ event.key }}
+  </button>
 </nav>

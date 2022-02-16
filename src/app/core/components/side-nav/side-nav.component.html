@@ -1,47 +1,106 @@
-<div id="side_nav"
-     class="d-flex flex-column flex-shrink-0 bg-light">
-    <a href="/" class="d-block p-3 link-dark text-decoration-none" title="Icon-only" data-bs-toggle="tooltip"
-       data-bs-placement="right">
-        <img class="me-2" src="assets/icons/icon-152x152.png" alt="" width="32" height="32">
-        <span class="visually-hidden">Icon-only</span>
+<div id="side_nav" class="d-flex flex-column flex-shrink-0 bg-light">
+  <a
+    href="/"
+    class="d-block p-3 link-dark text-decoration-none"
+    title="Icon-only"
+    data-bs-toggle="tooltip"
+    data-bs-placement="right"
+  >
+    <img
+      class="me-2"
+      src="assets/icons/icon-152x152.png"
+      alt=""
+      width="32"
+      height="32"
+    />
+    <span class="visually-hidden">Icon-only</span>
+  </a>
+  <ul class="nav nav-pills nav-flush flex-column mb-auto text-center">
+    <li
+      matTooltip="Zadania do rozwiązania"
+      (click)="setPage(NavPages.Levels)"
+      class="nav-item hover--pointer"
+    >
+      <span
+        id="levels_handle"
+        class="nav-link active py-3 border-bottom"
+        aria-current="page"
+      >
+        <svg
+          class="bi"
+          width="24"
+          height="24"
+          role="img"
+          aria-label="Główne zadania"
+        >
+          <use xlink:href="#home" />
+        </svg>
+      </span>
+    </li>
+    <li
+      matTooltip="Rozwiązania"
+      (click)="setPage(NavPages.Solved)"
+      class="nav-item hover--pointer"
+    >
+      <span id="solved_handle" class="nav-link py-3 border-bottom">
+        <svg
+          class="bi"
+          width="24"
+          height="24"
+          role="img"
+          aria-label="Solved levels"
+        >
+          <use xlink:href="#check-circle" />
+        </svg>
+      </span>
+    </li>
+  </ul>
+  <div class="dropdown border-top">
+    <a
+      href="#"
+      class="
+        d-flex
+        align-items-center
+        justify-content-center
+        p-3
+        link-dark
+        text-decoration-none
+        dropdown-toggle
+      "
+      id="dropdownUser3"
+      data-bs-toggle="dropdown"
+      aria-expanded="false"
+    >
+      <img
+        src="assets/icons/rxjs_logo.png"
+        alt="mdo"
+        width="24"
+        height="24"
+        class="rounded-circle"
+      />
     </a>
-    <ul class="nav nav-pills nav-flush flex-column mb-auto text-center">
-        <li matTooltip="Zadania do rozwiązania"
-            (click)="setPage(NavPages.Levels)"
-            class="nav-item hover--pointer"
+    <ul class="dropdown-menu text-small shadow" aria-labelledby="dropdownUser3">
+      <li>
+        <a
+          class="dropdown-item"
+          href="https://www.learnrxjs.io/"
+          target="_blank"
+          >Learn RxJS</a
         >
-            <span id="levels_handle"
-               class="nav-link active py-3 border-bottom"
-               aria-current="page">
-                <svg class="bi" width="24" height="24" role="img" aria-label="Główne zadania">
-                    <use xlink:href="#home"/>
-                </svg>
-            </span>
-        </li>
-        <li matTooltip="Rozwiązania"
-            (click)="setPage(NavPages.Solved)"
-            class="nav-item hover--pointer"
+      </li>
+      <li>
+        <a class="dropdown-item" href="https://rxjs.dev/" target="_blank"
+          >RxJS official</a
         >
-            <span id="solved_handle" class="nav-link py-3 border-bottom">
-                <svg class="bi" width="24" height="24" role="img" aria-label="Solved levels">
-                    <use xlink:href="#check-circle"/>
-                </svg>
-            </span>
-        </li>
+      </li>
+      <li>
+        <hr class="dropdown-divider" />
+      </li>
+      <li>
+        <a class="dropdown-item" href="https://quak.com.pl" target="_blank"
+          >quak.com.pl</a
+        >
+      </li>
     </ul>
-    <div class="dropdown border-top">
-        <a href="#"
-           class="d-flex align-items-center justify-content-center p-3 link-dark text-decoration-none dropdown-toggle"
-           id="dropdownUser3" data-bs-toggle="dropdown" aria-expanded="false">
-            <img src="assets/icons/rxjs_logo.png" alt="mdo" width="24" height="24" class="rounded-circle">
-        </a>
-        <ul class="dropdown-menu text-small shadow" aria-labelledby="dropdownUser3">
-            <li><a class="dropdown-item" href="https://www.learnrxjs.io/" target="_blank">Learn RxJS</a></li>
-            <li><a class="dropdown-item" href="https://rxjs.dev/" target="_blank">RxJS official</a></li>
-            <li>
-                <hr class="dropdown-divider">
-            </li>
-            <li><a class="dropdown-item" href="https://quak.com.pl" target="_blank">quak.com.pl</a></li>
-        </ul>
-    </div>
+  </div>
 </div>

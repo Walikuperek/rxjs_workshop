@@ -1,39 +1,58 @@
 <article class="route-window bg-white overflow-auto">
-    <span class="d-flex align-items-center flex-shrink-0 p-3 link-dark text-decoration-none border-bottom">
-        <span class="fs-5 fw-semibold">Games CRUD</span>
-        <span style="flex: 1 1 auto;"></span>
-    </span>
+  <span
+    class="
+      d-flex
+      align-items-center
+      flex-shrink-0
+      p-3
+      link-dark
+      text-decoration-none
+      border-bottom
+    "
+  >
+    <span class="fs-5 fw-semibold">Games CRUD</span>
+    <span style="flex: 1 1 auto"></span>
+  </span>
 
-    <scam-alert [type]="AlertType.Light" [message]="'src/app/levels/level-two'"></scam-alert>
+  <scam-alert
+    [type]="AlertType.Light"
+    [message]="'src/app/levels/level-two'"
+  ></scam-alert>
 
-    <header class="p-3 bg-light text-white" style="position: sticky; top: 0; z-index: 99;">
-        <level-header-counters-n-search
-                [addedGamesLength]="addedGames.length"
-                [gamesLength]="games.rows.length"
-                (search)="onCriteriaChange($event)"
-                (toggleAddedGamesList)="addedListToggle.click()"
-        ></level-header-counters-n-search>
+  <header
+    class="p-3 bg-light text-white"
+    style="position: sticky; top: 0; z-index: 99"
+  >
+    <level-header-counters-n-search
+      [addedGamesLength]="addedGames.length"
+      [gamesLength]="games.rows.length"
+      (search)="onCriteriaChange($event)"
+      (toggleAddedGamesList)="addedListToggle.click()"
+    ></level-header-counters-n-search>
 
-        <button #addedListToggle type="button"
-                data-bs-toggle="collapse"
-                data-bs-target="#collapseAddedGames"
-                aria-expanded="false" style="opacity: 0; visibility: hidden; height: 0;"
-        ></button>
+    <button
+      #addedListToggle
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#collapseAddedGames"
+      aria-expanded="false"
+      style="opacity: 0; visibility: hidden; height: 0"
+    ></button>
 
-        <div class="collapse" id="collapseAddedGames">
-            <div class="card card-body">
-                <level-added-games-list
-                    [addedGames]="addedGames"
-                    (removeGame)="onRemoveGame($event)"
-                ></level-added-games-list>
-            </div>
-        </div>
-    </header>
-
-    <div class="container">
-        <level-games-list
-                [games]="games.rows"
-                (addGame)="onAddGame($event)"
-        ></level-games-list>
+    <div class="collapse" id="collapseAddedGames">
+      <div class="card card-body">
+        <level-added-games-list
+          [addedGames]="addedGames"
+          (removeGame)="onRemoveGame($event)"
+        ></level-added-games-list>
+      </div>
     </div>
+  </header>
+
+  <div class="container">
+    <level-games-list
+      [games]="games.rows"
+      (addGame)="onAddGame($event)"
+    ></level-games-list>
+  </div>
 </article>

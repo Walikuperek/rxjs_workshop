@@ -1,36 +1,38 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {Events} from '../../events.enum';
-import {IEvent} from '../../models/IEvent.interface';
-import {EventBusService} from '../../event-bus.service';
-import {EventStoreService} from '../../event-store.service';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Events } from '../../events.enum';
+import { IEvent } from '../../models/IEvent.interface';
+import { EventBusService } from '../../event-bus.service';
+import { EventStoreService } from '../../event-store.service';
 
 @Component({
-    selector: 'level-header-collapse-list',
-    templateUrl: './header-collapse-list.component.html'
+  selector: 'level-header-collapse-list',
+  templateUrl: './header-collapse-list.component.html',
 })
 export class HeaderCollapseListComponent implements OnInit {
-    public Events = Events;
-    private _events: IEvent[] = [];
+  public Events = Events;
+  private _events: IEvent[] = [];
 
-    get events(): IEvent[] {
-        return this._events.filter(event => event.type === Events.ContentAdded);
-    }
+  get events(): IEvent[] {
+    return this._events.filter((event) => event.type === Events.ContentAdded);
+  }
 
-    @Input() set events(value: IEvent[]) { this._events = value; }
-    @Output() public fireContentAddedEvent: EventEmitter<Events> = new EventEmitter();
+  @Input() set events(value: IEvent[]) {
+    this._events = value;
+  }
+  @Output() public fireContentAddedEvent: EventEmitter<Events> = new EventEmitter();
 
-    constructor(
-        private _eventStore: EventStoreService,
-        private _eventBus: EventBusService) {
-    }
+  constructor(
+    private _eventStore: EventStoreService,
+    private _eventBus: EventBusService
+  ) {}
 
-    ngOnInit() {
-        this._listenToContentRemoved();
-    }
+  ngOnInit() {
+    this._listenToContentRemoved();
+  }
 
-    private _listenToContentRemoved() {
-        this._eventBus.on(Events.ContentRemoved, (event: IEvent) => {
-            this._eventStore.removeLastEvent(Events.ContentAdded);
-        });
-    }
+  private _listenToContentRemoved() {
+    this._eventBus.on(Events.ContentRemoved, (event: IEvent) => {
+      this._eventStore.removeLastEventOfType(Events.ContentAdded);
+    });
+  }
 }

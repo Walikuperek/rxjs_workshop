@@ -1,34 +1,48 @@
 <div class="m-2 d-flex flex-column">
-    <div class="d-flex align-items-center">
-        <button class="me-2 btn btn-outline-secondary d-flex align-items-center"
-                matTooltip="Dodaj nowy event"
-                (click)="fireContentAddedEvent.emit(Events.ContentAdded)">
-            <small>Event</small>&nbsp;ContentAdded
-            <mat-icon>add</mat-icon>&nbsp;
-        </button>
-        <button [ngClass]="{'disabled': events.length === 0}"
-                class="btn btn-outline-primary" type="button" data-bs-toggle="collapse"
-                data-bs-target="#collapseExample"
-                aria-expanded="false" aria-controls="collapseExample">
-            Ostatni autorzy contentu
-        </button>
-    </div>
-    <div class="collapse" id="collapseExample">
-        <div class="card card-body" *ngFor="let event of events">
-            <div class="list-group">
-                <a href="#" class="list-group-item list-group-item-action d-flex gap-3 py-3"
-                   aria-current="true">
-                    <img src="assets/icons/icon-152x152.png" alt="twbs" width="32" height="32"
-                         class="rounded-circle flex-shrink-0">
-                    <div class="d-flex gap-2 w-100 justify-content-between">
-                        <div>
-                            <h6 class="mb-0">{{event.data?.author}}</h6>
-                            <p class="mb-0 opacity-75">{{event.type}}</p>
-                        </div>
-                        <small class="opacity-50 text-nowrap">{{event.createdAt | date: 'MMM dd, HH:mm:ss'}}</small>
-                    </div>
-                </a>
+  <div class="d-flex align-items-center">
+    <button
+      class="me-2 btn btn-outline-secondary d-flex align-items-center"
+      matTooltip="Dodaj nowy event"
+      (click)="fireContentAddedEvent.emit(Events.ContentAdded)"
+    >
+      <small>Event</small>&nbsp;ContentAdded <mat-icon>add</mat-icon>&nbsp;
+    </button>
+    <button
+      [ngClass]="{ disabled: events.length === 0 }"
+      class="btn btn-outline-primary"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#collapseEvents"
+      aria-expanded="false"
+      aria-controls="collapseEvents"
+    >
+      Ostatni autorzy contentu
+    </button>
+  </div>
+  <div class="collapse" id="collapseEvents">
+    <div class="card card-body mt-2" *ngFor="let event of events">
+      <div class="list-group">
+        <a
+          class="list-group-item list-group-item-action d-flex gap-3 py-3"
+        >
+          <img
+            src="assets/icons/icon-152x152.png"
+            alt="twbs"
+            width="32"
+            height="32"
+            class="rounded-circle flex-shrink-0"
+          />
+          <div class="d-flex gap-2 w-100 justify-content-between">
+            <div>
+              <h6 class="mb-0">{{ event.data?.author }}</h6>
+              <p class="mb-0 opacity-75">{{ event.type }}</p>
             </div>
-        </div>
+            <small class="opacity-50 text-nowrap">{{
+              event.createdAt | date: 'MMM dd, HH:mm:ss'
+            }}</small>
+          </div>
+        </a>
+      </div>
     </div>
+  </div>
 </div>

@@ -1,38 +1,37 @@
-import {Component, VERSION} from '@angular/core';
-
+import { Component, VERSION } from '@angular/core';
 
 @Component({
-    selector: 'app-solved-level-one',
-    templateUrl: './solved-level-one.component.html'
+  selector: 'app-solved-level-one',
+  templateUrl: './solved-level-one.component.html',
 })
 export class SolvedLevelOneComponent {
-    public version = VERSION;
-    public codeFiles: { name: string; code: string; }[] = [];
+  public version = VERSION;
+  public codeFiles: { name: string; code: string }[] = [];
 
-    private _wholeServiceCode = getWholeServiceCode();
-    private _wholeComponentTS = getWholeComponentTSCode();
-    private _wholeComponentHTML = getWholeHtmlCode();
+  private _wholeServiceCode = getWholeServiceCode();
+  private _wholeComponentTS = getWholeComponentTSCode();
+  private _wholeComponentHTML = getWholeHtmlCode();
 
-    constructor() {
-        this.codeFiles.push(
-            {
-                name: 'followers-reactive.service.ts',
-                code: this._wholeServiceCode
-            },
-            {
-                name: 'level-one-reactive.component.ts',
-                code: this._wholeComponentTS
-            },
-            {
-                name: 'level-one-reactive.component.html',
-                code: this._wholeComponentHTML
-            }
-        );
-    }
+  constructor() {
+    this.codeFiles.push(
+      {
+        name: 'followers-reactive.service.ts',
+        code: this._wholeServiceCode,
+      },
+      {
+        name: 'level-one-reactive.component.ts',
+        code: this._wholeComponentTS,
+      },
+      {
+        name: 'level-one-reactive.component.html',
+        code: this._wholeComponentHTML,
+      }
+    );
+  }
 }
 
 function getWholeServiceCode(): string {
-    return `import {Injectable} from '@angular/core';
+  return `import {Injectable} from '@angular/core';
 import {FollowersHttpSimulator, IFollower} from '../../fake-backend/followers.backend';
 import {BehaviorSubject, merge, Observable} from 'rxjs';
 import {map, shareReplay, switchMap, tap} from 'rxjs/operators';
@@ -82,7 +81,7 @@ export class FollowersReactiveService {
 }
 
 function getWholeComponentTSCode(): string {
-    return `import {Component, OnDestroy, OnInit} from '@angular/core';
+  return `import {Component, OnDestroy, OnInit} from '@angular/core';
 import {FollowersHttpSimulator, IFollower} from '../../fake-backend/followers.backend';
 import {FollowersReactiveService} from './followers-reactive.service';
 import {combineLatest, Observable} from 'rxjs';
@@ -147,7 +146,7 @@ export class LevelOneReactiveComponent implements OnInit, OnDestroy {
 }
 
 function getWholeHtmlCode(): string {
-    return `<article class="route-window bg-white overflow-auto">
+  return `<article class="route-window bg-white overflow-auto">
     <span class="d-flex align-items-center flex-shrink-0 p-3 link-dark text-decoration-none border-bottom">
         <span class="fs-5 fw-semibold">Followers</span>
     </span>

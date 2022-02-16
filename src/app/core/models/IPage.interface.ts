@@ -1,12 +1,12 @@
-import {Difficulty} from './Difficulty.enum';
-import {NavPages} from './NavPage.enum';
+import { Difficulty } from './Difficulty.enum';
+import { NavPages } from './NavPage.enum';
 
 export interface IPage {
-    isActive: boolean;
-    name: string;
-    difficulty: Difficulty;
-    description: string;
-    route: string;
-    navPage: NavPages;
-    isReactive: boolean;
+  isActive: boolean;
+  name: string;
+  difficulty: Difficulty;
+  description: string;
+  route: string;
+  navPage: NavPages;
+  isReactive: boolean;
 }
