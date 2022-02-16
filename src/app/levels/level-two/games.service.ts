@@ -8,10 +8,12 @@ export class GamesService {
   public games: IGame[] = GAMES_LIST.rows;
 
   getGames(): Observable<IGame[]> {
+    /* Simulates this.http.get('url/to/games') */
     return completedObservable(this.games);
   }
 
   filter(criteria: string): Observable<IGame[]> {
+    /* Simulates this.http.get('url/to/games/search?criteria=$criteria') */
     this.games = [...GAMES_LIST.rows];
     return completedObservable(
       this.games.filter((game) =>
