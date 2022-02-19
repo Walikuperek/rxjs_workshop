@@ -8,7 +8,7 @@ import { EventStoreService } from '../../event-store.service';
   selector: 'level-header-collapse-list',
   templateUrl: './header-collapse-list.component.html',
 })
-export class HeaderCollapseListComponent implements OnInit {
+export class HeaderCollapseListComponent {
   public Events = Events;
   private _events: IEvent[] = [];
 
@@ -25,14 +25,4 @@ export class HeaderCollapseListComponent implements OnInit {
     private _eventStore: EventStoreService,
     private _eventBus: EventBusService
   ) {}
-
-  ngOnInit() {
-    this._listenToContentRemoved();
-  }
-
-  private _listenToContentRemoved() {
-    this._eventBus.on(Events.ContentRemoved, (event: IEvent) => {
-      this._eventStore.removeLastEventOfType(Events.ContentAdded);
-    });
-  }
 }
