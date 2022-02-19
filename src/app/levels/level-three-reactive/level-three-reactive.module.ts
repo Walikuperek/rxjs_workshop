@@ -13,6 +13,8 @@ import { HeaderCollapseListComponent } from './components/header-collapse-list/h
 import { HeaderEventButtonsComponent } from './components/header-event-buttons/header-event-buttons.component';
 import { ContentAuthorsCounterModule } from './modules/content-authors-counter/content-authors-counter.module';
 import { AlertModule } from '../../scam/alert/alert.module';
+import { EventSplittedListComponent } from './components/event-splitted-list/event-splitted-list.component';
+import {UnorderedListModule} from "../../scam/unordered-list/unordered-list.module";
 
 @NgModule({
   declarations: [
@@ -20,16 +22,18 @@ import { AlertModule } from '../../scam/alert/alert.module';
     EventfireNavComponent,
     HeaderCollapseListComponent,
     HeaderEventButtonsComponent,
+    EventSplittedListComponent,
   ],
-  imports: [
-    CommonModule,
-    LevelThreeReactiveRoutingModule,
-    MatIconModule,
-    MatButtonModule,
-    MatTooltipModule,
-    ContentAuthorsCounterModule,
-    AlertModule,
-  ],
+    imports: [
+        CommonModule,
+        LevelThreeReactiveRoutingModule,
+        MatIconModule,
+        MatButtonModule,
+        MatTooltipModule,
+        ContentAuthorsCounterModule,
+        AlertModule,
+        UnorderedListModule,
+    ],
   providers: [EventBusService, EventStoreService],
 })
 export class LevelThreeReactiveModule {}

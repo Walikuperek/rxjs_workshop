@@ -9,18 +9,20 @@ import { FollowersReactiveService } from './followers-reactive.service';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { AlertModule } from '../../scam/alert/alert.module';
+import {LevelFollowersListModule} from "../../scam/level-followers-list/level-followers-list.module";
 
 @NgModule({
   declarations: [LevelOneReactiveComponent],
-  imports: [
-    CommonModule,
-    LevelOneReactiveRoutingModule,
-    LevelHeaderModule,
-    LevelProgressModule,
-    MatIconModule,
-    MatTooltipModule,
-    AlertModule,
-  ],
+    imports: [
+        CommonModule,
+        LevelOneReactiveRoutingModule,
+        LevelHeaderModule,
+        LevelProgressModule,
+        MatIconModule,
+        MatTooltipModule,
+        AlertModule,
+        LevelFollowersListModule,
+    ],
   providers: [FollowersReactiveService],
 })
 export class LevelOneReactiveModule {}

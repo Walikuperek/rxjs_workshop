@@ -1,0 +1,23 @@
+<div class="container-fluid mt-3 pb-3">
+    <div class="d-grid gap-3"
+         style="grid-template-columns: 1fr 2fr; min-height: 300px"
+    >
+        <div class="bg-light border rounded-3 p-2">
+            <div class="d-flex flex-column">
+                <scam-alert
+                        *ngIf="events.length === 0"
+                        [type]="AlertType.Light"
+                        [message]="'Brak eventów.'"
+                ></scam-alert>
+                <span *ngFor="let event of events">{{ event.createdAt | date: 'dd/MM/yyyy - HH:mm:ss.SSS' }}</span>
+            </div>
+        </div>
+
+        <div class="bg-light border rounded-3 p-2 d-flex flex-column">
+          <span *ngFor="let event of events">
+            {{ event.type }}&nbsp;
+              {{ event.data | json }}
+          </span>
+        </div>
+    </div>
+</div>

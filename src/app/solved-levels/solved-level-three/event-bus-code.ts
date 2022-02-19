@@ -1,4 +1,5 @@
-import {Injectable, OnDestroy} from '@angular/core';
+export const getEventBusCode = (): string => {
+  return `import {Injectable, OnDestroy} from '@angular/core';
 import {Subject, Subscription} from 'rxjs';
 import {filter, map, shareReplay, takeUntil} from 'rxjs/operators';
 import {Events} from './events.enum';
@@ -36,4 +37,5 @@ export class EventBusService implements OnDestroy {
         this._event$.next({type, data, createdAt}); // Pass next event
         this._eventStore.addEvent({type, data, createdAt}); // Pass event to store
     }
-}
+}`;
+};

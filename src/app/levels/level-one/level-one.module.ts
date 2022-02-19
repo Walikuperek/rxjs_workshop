@@ -9,18 +9,20 @@ import { LevelProgressModule } from '../../scam/level-progress/level-progress.mo
 import { MatIconModule } from '@angular/material/icon';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { AlertModule } from '../../scam/alert/alert.module';
+import {LevelFollowersListModule} from "../../scam/level-followers-list/level-followers-list.module";
 
 @NgModule({
   declarations: [LevelOneComponent],
-  imports: [
-    CommonModule,
-    LevelOneRoutingModule,
-    LevelHeaderModule,
-    LevelProgressModule,
-    MatIconModule,
-    MatTooltipModule,
-    AlertModule,
-  ],
+    imports: [
+        CommonModule,
+        LevelOneRoutingModule,
+        LevelHeaderModule,
+        LevelProgressModule,
+        MatIconModule,
+        MatTooltipModule,
+        AlertModule,
+        LevelFollowersListModule,
+    ],
   providers: [FollowersService],
 })
 export class LevelOneModule {}

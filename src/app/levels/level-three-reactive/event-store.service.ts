@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import {BehaviorSubject, Observable} from 'rxjs';
 import { IEvent } from './models/IEvent.interface';
 import { Events } from './events.enum';
+import {shareReplay} from 'rxjs/operators';
 
 @Injectable()
 export class EventStoreService {
@@ -9,13 +10,13 @@ export class EventStoreService {
 
   // -----------------------------------------------------------------------------------------------------
   // @ Public API
-  public events$ = this._store$.asObservable();
+  public events$: Observable<IEvent[]> = this._store$.pipe(shareReplay({refCount: true, bufferSize: 1}));
 
   public addEvent(event: IEvent): void {
-    this._store$.next(reversedArrToShowNewestOnTop([...this._store$.getValue(), event]));
+    this._store$.next([...this._store$.getValue(), event].sort(sortByDateDesc));
 
-    function reversedArrToShowNewestOnTop(arr: IEvent[]): IEvent[] {
-      return arr.reverse();
+    function sortByDateDesc(a: IEvent, b: IEvent): number {
+      return b.createdAt.getTime() - a.createdAt.getTime();
     }
   }
 

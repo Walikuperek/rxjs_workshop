@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+export const getComponentTSCode = (): string => {
+  return `import { Component, OnInit } from '@angular/core';
 import {
   FollowersHttpSimulator,
   IFollower,
@@ -52,10 +53,11 @@ export class LevelOneReactiveComponent implements OnInit {
       return alert('Brak followersów do usunięcia');
     }
     const confirmed = confirm(
-      'Czy na pewno chcesz usunąć wszystkich followersów?'
+      'Czy na pewno chcesz usunąć wszystkich followers?'
     );
     if (confirmed) {
       this.followersRxService.deleteAll().subscribe();
     }
   }
-}
+}`;
+};

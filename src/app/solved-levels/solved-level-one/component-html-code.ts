@@ -1,4 +1,5 @@
-<article class="route-window bg-white overflow-auto">
+export const getHtmlCode = (): string => {
+  return `<article class="route-window bg-white overflow-auto">
   <span class="d-flex align-items-center p-3 link-dark text-decoration-none border-bottom">
     <span class="fs-5 fw-semibold">Followers</span>
   </span>
@@ -20,4 +21,5 @@
       ></scam-level-followers-list>
     </ng-container>
   </section>
-</article>
+</article>`;
+};

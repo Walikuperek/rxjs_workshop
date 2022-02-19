@@ -51,6 +51,8 @@ const routes: Routes = [
         (m) => m.SolvedLevelOneModule
       ),
   },
+  { path: 'solved-level-2', loadChildren: () => import('./solved-levels/solved-level-two/solved-level-two.module').then(m => m.SolvedLevelTwoModule) },
+  { path: 'solved-level-3', loadChildren: () => import('./solved-levels/solved-level-three/solved-level-three.module').then(m => m.SolvedLevelThreeModule) },
 ];
 
 @NgModule({

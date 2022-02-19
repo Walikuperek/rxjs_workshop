@@ -1,0 +1,12 @@
+<ng-container *ngFor="let code of codeFiles">
+    <div class="alert alert-info m-2 d-flex" role="alert">
+        <mat-icon class="me-2">{{icon}}</mat-icon>{{code.path}}<b>{{code.name}}</b>
+    </div>
+
+    <div class="card m-2">
+        <div class="card-header">
+            <h6>{{ code.name }}</h6>
+        </div>
+        <pre><code [highlight]="code.code"></code></pre>
+    </div>
+</ng-container>
