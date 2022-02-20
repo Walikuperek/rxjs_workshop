@@ -6,6 +6,7 @@ import { SolvedLevelTwoComponent } from './solved-level-two.component';
 import {CodeSnippetListModule} from "../../scam/code-snippet-list/code-snippet-list.module";
 import {UnorderedListModule} from "../../scam/unordered-list/unordered-list.module";
 import {FooterAngularVersionModule} from "../../scam/footer-angular-version/footer-angular-version.module";
+import {AlertModule} from "../../scam/alert/alert.module";
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import {FooterAngularVersionModule} from "../../scam/footer-angular-version/foot
         SolvedLevelTwoRoutingModule,
         CodeSnippetListModule,
         UnorderedListModule,
-        FooterAngularVersionModule
+        FooterAngularVersionModule,
+        AlertModule
     ]
 })
 export class SolvedLevelTwoModule { }

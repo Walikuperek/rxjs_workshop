@@ -3,24 +3,19 @@
         <span class="fs-5 fw-semibold">Rozwiązanie zadania 3</span>
     </span>
 
-    <div class="border-bottom">
-        <scam-unordered-list
-            [title]="'Zmienione pliki'"
-            [list]="[
-                'event-bus.service.ts',
-            ]"
-        ></scam-unordered-list>
-    </div>
-
-    <div class="border-bottom">
-        <scam-unordered-list
-              [title]="'event-bus.service.ts'"
-              [list]="[
+    <div class="card m-2 mb-4">
+        <div class="card-body">
+            <scam-unordered-list
+                    [title]="'event-bus.service.ts'"
+                    [list]="[
                     'Napisać Subjecta trzymającego jeden, ostatni event',
                     'Stworzyc metodę: on<T>(type: Events, callback: (data: T) => void): Subscription',
                     'Stworzyc metodę: emit<T>(type: Events, data: T): void',
               ]"
-        ></scam-unordered-list>
+            ></scam-unordered-list>
+            <scam-alert [type]="AlertType.Light"
+                        [message]="'level-three-reactive/event-bus.service.ts'"></scam-alert>
+        </div>
     </div>
 
     <scam-code-snippet-list [codeFiles]="codeFiles"></scam-code-snippet-list>

@@ -3,25 +3,20 @@
         <span class="fs-5 fw-semibold">Rozwiązanie zadania 2</span>
     </span>
 
-    <div class="border-bottom">
-        <scam-unordered-list
-            [title]="'Zmienione pliki'"
-            [list]="[
-                'added-games.service.ts',
-            ]"
-        ></scam-unordered-list>
-    </div>
-
-    <div class="border-bottom">
-        <scam-unordered-list
-              [title]="'Co należy zrobic w zadaniu'"
-              [list]="[
-                    'added-games.service.ts | Napisać BehaviorSubjecta _crudActions$ do obsługi zdarzeń CRUD',
-                    'added-games.service.ts | Stworzyć addedGames$ z _crudActions$.pipe + switchMap aby odświeżać listę gier (_getAddedGames())',
-                    'added-games.service.ts | Stworzyc metodę: addGame(game: IGame): Observable<IGame>',
-                    'added-games.service.ts | Tapnąć next(CrudAction) wewnątrz metod: _add oraz _remove',
+    <div class="card m-2 mb-4">
+        <div class="card-body">
+            <scam-unordered-list
+                    [title]="'added-games.service.ts'"
+                    [list]="[
+                    'Napisać BehaviorSubjecta _crudActions$ do obsługi zdarzeń CRUD',
+                    'Stworzyć addedGames$ z _crudActions$.pipe + switchMap aby odświeżać listę gier (_getAddedGames())',
+                    'Stworzyc metodę: addGame(game: IGame): Observable<IGame>',
+                    'Tapnąć next(CrudAction) wewnątrz metod: _add oraz _remove',
               ]"
-        ></scam-unordered-list>
+            ></scam-unordered-list>
+            <scam-alert [type]="AlertType.Light"
+                        [message]="'level-two-reactive/added-games.service.ts'"></scam-alert>
+        </div>
     </div>
 
     <scam-code-snippet-list [codeFiles]="codeFiles"></scam-code-snippet-list>

@@ -9,6 +9,7 @@ import {MatIconModule} from '@angular/material/icon';
 import {CodeSnippetListModule} from '../../scam/code-snippet-list/code-snippet-list.module';
 import {FooterAngularVersionModule} from '../../scam/footer-angular-version/footer-angular-version.module';
 import {UnorderedListModule} from '../../scam/unordered-list/unordered-list.module';
+import {AlertModule} from "../../scam/alert/alert.module";
 
 @NgModule({
     declarations: [SolvedLevelOneComponent],
@@ -20,6 +21,7 @@ import {UnorderedListModule} from '../../scam/unordered-list/unordered-list.modu
         CodeSnippetListModule,
         FooterAngularVersionModule,
         UnorderedListModule,
+        AlertModule,
     ],
 })
 export class SolvedLevelOneModule {

@@ -3,28 +3,30 @@
         <span class="fs-5 fw-semibold">Rozwiązanie zadania 1</span>
     </span>
 
-    <div class="border-bottom">
-        <scam-unordered-list
-            [title]="'Zmienione pliki'"
-            [list]="[
-                'followers-reactive.service.ts',
-                'level-one-reactive.component.ts',
-                'level-one-reactive.component.html'
-            ]"
-        ></scam-unordered-list>
-    </div>
+    <div class="card m-2 mb-4">
+        <div class="card-body">
+            <scam-unordered-list
+                    [title]="'followers-reactive.service.ts'"
+                    [list]="[
+                        'Napisać _count$: BehaviorSubject<number> i zainicjować go na 0',
+                        'Napisać _refreshEvent$: BehaviorSubject<boolean> i zainicjować go na false',
+                        'Stworzyć followers$: Observable<IFollower[]> i wykorzystać switchMap + map + tap',
+                        'Stworzyć metodę: count(): number, która ma zwracać wartość _count$',
+                        'Dodać tap wewnątrz metod: create & delete & deleteAll, aby wywołać refreshEvent$',
+                  ]"
+            ></scam-unordered-list>
+            <scam-alert [type]="AlertType.Light"
+                        [message]="'level-one-reactive/followers-reactive.service.ts'"></scam-alert>
 
-    <div class="border-bottom">
-        <scam-unordered-list
-              [title]="'followers-reactive.service.ts'"
-              [list]="[
-                    'Napisać _count$: BehaviorSubject<number> i zainicjować go na 0',
-                    'Napisać _refreshEvent$: BehaviorSubject<boolean> i zainicjować go na false',
-                    'Stworzyć followers$: Observable<IFollower[]> i wykorzystać switchMap + map + tap',
-                    'Stworzyć metodę: count(): number, która ma zwracać wartość _count$',
-                    'Dodać tap wewnątrz metod: create & delete & deleteAll, aby wywołać refreshEvent$',
-              ]"
-        ></scam-unordered-list>
+            <scam-unordered-list
+                    [title]="'level-one-reactive.component.ts'"
+                    [list]="[
+                        'Napisać _vm$ z wykorzystaniem combineLatest([count$, followers$]) oraz map aby mieć vm.followers',
+                  ]"
+            ></scam-unordered-list>
+            <scam-alert [type]="AlertType.Light"
+                        [message]="'level-one-reactive/followers-reactive.service.ts'"></scam-alert>
+        </div>
     </div>
 
     <scam-code-snippet-list
