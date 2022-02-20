@@ -1,45 +1,46 @@
 <article class="route-window bg-white overflow-auto">
-  <span
-          class="d-flex align-items-center flex-shrink-0 p-3 link-dark text-decoration-none border-bottom "
-  >
-    <span class="fs-5 fw-semibold">Event Bus</span>
-    <span style="flex: 1 1 auto"></span>
-    <level-content-authors-counter></level-content-authors-counter>
-  </span>
+    <span class="d-flex align-items-center flex-shrink-0 p-3 link-dark text-decoration-none border-bottom">
+        <span class="fs-5 fw-semibold">Event Bus</span>
+        <span style="flex: 1 1 auto"></span>
+        <level-content-authors-counter></level-content-authors-counter>
+    </span>
 
     <scam-alert [type]="AlertType.Light" [message]="'src/app/levels/level-three-reactive'"></scam-alert>
     <scam-alert [type]="AlertType.Info" [message]="'Wykorzystaj RxJS do tworzenia i pokazywania eventów.'"></scam-alert>
 
-    <ng-container *ngIf="eventStore.events$ | async as events">
-        <header class="border-bottom py-2 d-flex align-items-center">
-            <level-header-collapse-list
-                    [events]="events"
-                    (fireContentAddedEvent)="onEventToBeFired(Events.ContentAdded)"
-            ></level-header-collapse-list>
-        </header>
+    <section class="container">
+        <ng-container *ngIf="eventStore.events$ | async as events">
+            <header class="border-bottom py-2 d-flex align-items-center">
+                <level-header-collapse-list
+                        [events]="events"
+                        (fireContentAddedEvent)="onEventToBeFired(Events.ContentAdded)"
+                ></level-header-collapse-list>
+            </header>
 
-        <header class="mt-2">
-            <level-header-event-buttons
-                    (clearEvents)="clearEvents()"
-                    (fireEvent)="onEventToBeFired($event)"
-            ></level-header-event-buttons>
-        </header>
+            <header class="mt-2">
+                <level-header-event-buttons
+                        (clearEvents)="clearEvents()"
+                        (fireEvent)="onEventToBeFired($event)"
+                ></level-header-event-buttons>
+            </header>
 
-        <level-event-splitted-list [events]="events"></level-event-splitted-list>
-    </ng-container>
+            <level-event-splitted-list [events]="events"></level-event-splitted-list>
+        </ng-container>
 
-    <div class="card m-2 mb-4">
-        <div class="card-header"><h5>Co należy zrobić w zadaniu</h5></div>
-        <div class="card-body">
-            <scam-unordered-list
-                    [title]="'event-bus.service.ts'"
-                    [list]="[
-                            'Napisać Subjecta trzymającego jeden, ostatni event',
-                            'Stworzyc metodę: on<T>(type: Events, callback: (data: T) => void): Subscription',
-                            'Stworzyc metodę: emit<T>(type: Events, data: T): void',
-                        ]"
-            ></scam-unordered-list>
-            <scam-alert [type]="AlertType.Light" [message]="'level-three-reactive/event-bus.service.ts'"></scam-alert>
+        <div class="card m-2 mb-4">
+            <div class="card-header"><h5>Co należy zrobić w zadaniu</h5></div>
+            <div class="card-body">
+                <scam-unordered-list
+                        [title]="'event-bus.service.ts'"
+                        [list]="[
+                                'Napisać Subjecta trzymającego jeden, ostatni event',
+                                'Stworzyc metodę: on<T>(type: Events, callback: (data: T) => void): Subscription',
+                                'Stworzyc metodę: emit<T>(type: Events, data: T): void',
+                            ]"
+                ></scam-unordered-list>
+                <scam-alert [type]="AlertType.Light"
+                            [message]="'level-three-reactive/event-bus.service.ts'"></scam-alert>
+            </div>
         </div>
-    </div>
+    </section>
 </article>

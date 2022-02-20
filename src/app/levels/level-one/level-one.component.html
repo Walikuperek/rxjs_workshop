@@ -1,23 +1,24 @@
 <article class="route-window bg-white overflow-auto">
-  <span class="d-flex align-items-center flex-shrink-0 p-3 link-dark text-decoration-none border-bottom">
-    <span class="fs-5 fw-semibold">Followers</span>
-  </span>
-  <section class="w-100">
+    <span class="d-flex align-items-center flex-shrink-0 p-3 link-dark text-decoration-none border-bottom">
+        <span class="fs-5 fw-semibold">Followers</span>
+    </span>
+
     <scam-alert [type]="AlertType.Light" [message]="'src/app/levels/level-one'"></scam-alert>
 
-    <div class="card m-2">
-      <div class="card-body border-top p-9">
-        <scam-level-header
-          [angularLogo]="true"
-          (followClick)="onFollowClick()"
-        ></scam-level-header>
-        <scam-level-progress [count]="followers.length"></scam-level-progress>
-      </div>
-    </div>
+    <section class="container">
+        <div class="card m-2">
+            <div class="card-body border-top p-9">
+                <scam-level-header
+                        [angularLogo]="true"
+                        (followClick)="onFollowClick()"
+                ></scam-level-header>
+                <scam-level-progress [count]="followers.length"></scam-level-progress>
+            </div>
+        </div>
 
-    <scam-level-followers-list
-        [followers]="followers"
-        (deleteAllFollowers)="deleteAllFollowers()"
-    ></scam-level-followers-list>
-  </section>
+        <scam-level-followers-list
+                [followers]="followers"
+                (deleteAllFollowers)="deleteAllFollowers()"
+        ></scam-level-followers-list>
+    </section>
 </article>
