@@ -4,7 +4,7 @@ import {
   IFollower,
 } from '../../fake-backend/followers.backend';
 import { FollowersReactiveService } from './followers-reactive.service';
-import { combineLatest, Observable } from 'rxjs';
+import {combineLatest, Observable, of} from 'rxjs';
 import { map } from 'rxjs/operators';
 import { AlertType } from '../../scam/alert/alert/alert.component';
 
@@ -24,10 +24,8 @@ export class LevelOneReactiveComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.vm$ = combineLatest([
-      this.followersRxService.count$,
-      this.followersRxService.followers$,
-    ]).pipe(map(([count, followers]) => ({ count, followers })));
+    // TODO: 6. Implement combineLatest and map for vm$.count and vm$.followers
+    this.vm$ = of({ count: 0, followers: [] });
   }
 
   // -----------------------------------------------------------------------------------------------------

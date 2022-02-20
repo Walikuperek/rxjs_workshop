@@ -13,6 +13,7 @@ import { AddedGamesListComponent } from './components/added-games-list/added-gam
 import { MatButtonModule } from '@angular/material/button';
 import { GamesService } from './games.service';
 import { AddedGamesService } from './added-games.service';
+import {UnorderedListModule} from "../../scam/unordered-list/unordered-list.module";
 
 @NgModule({
   declarations: [
@@ -21,15 +22,16 @@ import { AddedGamesService } from './added-games.service';
     GamesListComponent,
     AddedGamesListComponent,
   ],
-  imports: [
-    CommonModule,
-    LevelTwoRoutingModule,
-    MatIconModule,
-    MatTooltipModule,
-    FormsModule,
-    AlertModule,
-    MatButtonModule,
-  ],
+    imports: [
+        CommonModule,
+        LevelTwoRoutingModule,
+        MatIconModule,
+        MatTooltipModule,
+        FormsModule,
+        AlertModule,
+        MatButtonModule,
+        UnorderedListModule,
+    ],
   providers: [GamesService, AddedGamesService],
 })
 export class LevelTwoModule {}

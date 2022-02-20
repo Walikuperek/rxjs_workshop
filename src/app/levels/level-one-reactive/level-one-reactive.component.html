@@ -2,22 +2,49 @@
   <span class="d-flex align-items-center p-3 link-dark text-decoration-none border-bottom">
     <span class="fs-5 fw-semibold">Followers</span>
   </span>
-  <section class="w-100">
-    <scam-alert [type]="AlertType.Light" [message]="'src/app/levels/level-one-reactive'"></scam-alert>
-    <scam-alert [type]="AlertType.Info" [message]="'Obsłuż followersów z użyciem RxJS.'"></scam-alert>
+    <section class="container">
+        <scam-alert [type]="AlertType.Light" [message]="'src/app/levels/level-one-reactive'"></scam-alert>
+        <scam-alert [type]="AlertType.Info" [message]="'Obsłuż followersów z użyciem RxJS.'"></scam-alert>
 
-    <ng-container *ngIf="vm$ | async as vm">
-      <div class="card m-2">
-        <div class="card-body border-top p-9">
-          <scam-level-header (followClick)="onFollowClick()"></scam-level-header>
-          <scam-level-progress [count]="vm.count"></scam-level-progress>
+        <ng-container *ngIf="vm$ | async as vm">
+            <div class="card m-2">
+                <div class="card-body border-top p-9">
+                    <scam-level-header (followClick)="onFollowClick()"></scam-level-header>
+                    <scam-level-progress [count]="vm.count"></scam-level-progress>
+                </div>
+            </div>
+
+            <scam-level-followers-list
+                    [followers]="vm.followers"
+                    (deleteAllFollowers)="deleteAllFollowers()"
+            ></scam-level-followers-list>
+        </ng-container>
+
+        <div class="card m-2 mb-4">
+            <div class="card-header"><h5>Co należy zrobić w zadaniu</h5></div>
+            <div class="card-body">
+                <scam-unordered-list
+                        [title]="'followers-reactive.service.ts'"
+                        [list]="[
+                        'Napisać _count$: BehaviorSubject<number> i zainicjować go na 0',
+                        'Napisać _refreshEvent$: BehaviorSubject<boolean> i zainicjować go na false',
+                        'Stworzyć followers$: Observable<IFollower[]> i wykorzystać switchMap + map + tap',
+                        'Stworzyć metodę: count(): number, która ma zwracać wartość _count$',
+                        'Dodać tap wewnątrz metod: create & delete & deleteAll, aby wywołać refreshEvent$',
+                  ]"
+                ></scam-unordered-list>
+                <scam-alert [type]="AlertType.Light"
+                            [message]="'level-one-reactive/followers-reactive.service.ts'"></scam-alert>
+
+                <scam-unordered-list
+                        [title]="'level-one-reactive.component.ts'"
+                        [list]="[
+                        'Napisać _vm$ z wykorzystaniem combineLatest([count$, followers$]) oraz map aby mieć vm.followers',
+                  ]"
+                ></scam-unordered-list>
+                <scam-alert [type]="AlertType.Light"
+                            [message]="'level-one-reactive/followers-reactive.service.ts'"></scam-alert>
+            </div>
         </div>
-      </div>
-
-      <scam-level-followers-list
-        [followers]="vm.followers"
-        (deleteAllFollowers)="deleteAllFollowers()"
-      ></scam-level-followers-list>
-    </ng-container>
-  </section>
+    </section>
 </article>

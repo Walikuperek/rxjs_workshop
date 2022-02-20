@@ -7,8 +7,8 @@ import {EventStoreService} from './event-store.service';
 
 @Injectable()
 export class EventBusService implements OnDestroy {
-    private _destroyed$ = new Subject<void>(); // Flag for unsubscribing from observables after service is dead
-    private _event$ = new Subject<IEvent>(); // Will contain: Current event
+    private _destroyed$ = new Subject<void>();
+    // TODO: 1. _event$: Subject<IEvent>
 
     constructor(private _eventStore: EventStoreService) {
     }
@@ -20,20 +20,11 @@ export class EventBusService implements OnDestroy {
 
     // -----------------------------------------------------------------------------------------------------
     // @ Public API
-    public on<T>(type: Events, callback: (data: T) => void): Subscription {
-        return this._event$
-            .pipe(
-                filter((event) => event.type === type), // Get event only if it's the right type
-                map((event) => (event.data) as T), // Now this stream will emit only what's inside the Event.data
-                shareReplay({refCount: true, bufferSize: 1}), // Ensure that every subscriber gets the same stream
-                takeUntil(this._destroyed$) // Cancel the stream if the service is destroyed
-            )
-            .subscribe(callback);
+    public on<T>(type: Events, callback: (data: T) => void): any {
+        // TODO: 2. return Subscription
     }
 
     public emit<T>(type: Events, data: T): void {
-        const createdAt = new Date();
-        this._event$.next({type, data, createdAt}); // Pass next event
-        this._eventStore.addEvent({type, data, createdAt}); // Pass event to store
+        // TODO: 3. _event$ next + _eventStore add
     }
 }

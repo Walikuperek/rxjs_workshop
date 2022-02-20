@@ -12,6 +12,17 @@
         ></scam-unordered-list>
     </div>
 
+    <div class="border-bottom">
+        <scam-unordered-list
+              [title]="'event-bus.service.ts'"
+              [list]="[
+                    'Napisać Subjecta trzymającego jeden, ostatni event',
+                    'Stworzyc metodę: on<T>(type: Events, callback: (data: T) => void): Subscription',
+                    'Stworzyc metodę: emit<T>(type: Events, data: T): void',
+              ]"
+        ></scam-unordered-list>
+    </div>
+
     <scam-code-snippet-list [codeFiles]="codeFiles"></scam-code-snippet-list>
 
     <scam-footer-angular-version [text]="'Koniec strony z rozwiązaniem zadania 3'"></scam-footer-angular-version>

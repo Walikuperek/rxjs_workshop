@@ -1,14 +1,25 @@
-import { Component, OnInit } from '@angular/core';
+import {Component} from '@angular/core';
+import {ICodeFile} from '../../scam/code-snippet-list/ICodeFiles.interface';
+import {getAddedGamesServiceCode} from './added-games-service-code';
 
 @Component({
-  selector: 'app-solved-level-two',
-  templateUrl: './solved-level-two.component.html'
+    selector: 'app-solved-level-two',
+    templateUrl: './solved-level-two.component.html'
 })
-export class SolvedLevelTwoComponent implements OnInit {
+export class SolvedLevelTwoComponent {
 
-  constructor() { }
+    public codeFiles: ICodeFile[] = [];
 
-  ngOnInit(): void {
-  }
+    private _addedGamesServiceCode = getAddedGamesServiceCode();
+
+    constructor() {
+        this.codeFiles.push(
+            {
+                path: '/levels/level-two-reactive/',
+                name: 'added-games.service.ts',
+                code: this._addedGamesServiceCode,
+            },
+        );
+    }
 
 }

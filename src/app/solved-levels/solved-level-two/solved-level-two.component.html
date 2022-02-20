@@ -1,22 +1,30 @@
 <article class="route-window bg-white overflow-auto">
     <span class="d-flex align-items-center flex-shrink-0 p-3 link-dark text-decoration-none border-bottom">
-        <span class="fs-5 fw-semibold">Rozwiązanie zadania 1</span>
+        <span class="fs-5 fw-semibold">Rozwiązanie zadania 2</span>
     </span>
 
     <div class="border-bottom">
         <scam-unordered-list
             [title]="'Zmienione pliki'"
             [list]="[
-                'followers-reactive.service.ts',
-                'level-one-reactive.component.ts',
-                'level-one-reactive.component.html'
+                'added-games.service.ts',
             ]"
         ></scam-unordered-list>
     </div>
 
-<!--    <scam-code-snippet-list-->
-<!--            [codeFiles]="codeFiles"-->
-<!--    ></scam-code-snippet-list>-->
+    <div class="border-bottom">
+        <scam-unordered-list
+              [title]="'Co należy zrobic w zadaniu'"
+              [list]="[
+                    'added-games.service.ts | Napisać BehaviorSubjecta _crudActions$ do obsługi zdarzeń CRUD',
+                    'added-games.service.ts | Stworzyć addedGames$ z _crudActions$.pipe + switchMap aby odświeżać listę gier (_getAddedGames())',
+                    'added-games.service.ts | Stworzyc metodę: addGame(game: IGame): Observable<IGame>',
+                    'added-games.service.ts | Tapnąć next(CrudAction) wewnątrz metod: _add oraz _remove',
+              ]"
+        ></scam-unordered-list>
+    </div>
 
-    <scam-footer-angular-version [text]="'Koniec strony z rozwiązaniem zadania 1'"></scam-footer-angular-version>
+    <scam-code-snippet-list [codeFiles]="codeFiles"></scam-code-snippet-list>
+
+    <scam-footer-angular-version [text]="'Koniec strony z rozwiązaniem zadania 2'"></scam-footer-angular-version>
 </article>

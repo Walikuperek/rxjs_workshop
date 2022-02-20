@@ -10,6 +10,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { AlertModule } from '../../scam/alert/alert.module';
 import {LevelFollowersListModule} from "../../scam/level-followers-list/level-followers-list.module";
+import {UnorderedListModule} from "../../scam/unordered-list/unordered-list.module";
 
 @NgModule({
   declarations: [LevelOneReactiveComponent],
@@ -22,6 +23,7 @@ import {LevelFollowersListModule} from "../../scam/level-followers-list/level-fo
         MatTooltipModule,
         AlertModule,
         LevelFollowersListModule,
+        UnorderedListModule,
     ],
   providers: [FollowersReactiveService],
 })

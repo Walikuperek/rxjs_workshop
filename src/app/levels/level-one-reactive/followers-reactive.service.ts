@@ -1,49 +1,52 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {
-  FollowersHttpSimulator,
-  IFollower,
+    FollowersHttpSimulator,
+    IFollower,
 } from '../../fake-backend/followers.backend';
-import { BehaviorSubject, merge, Observable } from 'rxjs';
-import { map, switchMap, tap } from 'rxjs/operators';
+import {BehaviorSubject, merge, Observable, of} from 'rxjs';
+import {map, switchMap, tap} from 'rxjs/operators';
 
 @Injectable()
 export class FollowersReactiveService {
-  private _count$ = new BehaviorSubject<number>(0);
-  private _refreshEvent$ = new BehaviorSubject<boolean>(false);
+    // TODO: 1. Create _count$ BehaviorSubject<number>
+    private _count$ = of(0);
+    public count$ = this._count$; // Remember about .asObservable()
 
-  public followers$: Observable<IFollower[]> = merge(this._refreshEvent$).pipe(
-    switchMap(() => this._http.get()),
-    map((res) => res.followers),
-    tap((followers) => this._count$.next(followers.length))
-  );
+    // TODO: 2. Create _refreshEvent$ BehaviorSubject<boolean>
+    private _refreshEvent$ = of(false);
 
-  public count$ = this._count$.asObservable();
+    // TODO: 3. Create followers$: Observable<IFollower[]>
+    //                      - Use merge for _refreshEvent$ or just subscribe to it
+    //                      - Use switchMap for returning now this._http.get()
+    //                      - Use map to return only followers
+    //                      - Use tap to update _count$
+    public followers$: Observable<IFollower[]> = this._http.get().pipe(map(res => res.followers));
 
-  constructor(private _http: FollowersHttpSimulator) {}
 
-  public count(): number {
-    return this._count$.getValue();
-  }
+    constructor(private _http: FollowersHttpSimulator) {
+    }
 
-  public findOne(id: string): Observable<IFollower | undefined> {
-    return this._http.getOne(id);
-  }
+    // TODO: 4. Create method: count(): number, with use of getValue()
+    public count(): any {
+    }
 
-  public create(follower: IFollower): Observable<IFollower> {
-    return this._http
-      .post(follower)
-      .pipe(tap(() => this._refreshEvent$.next(true)));
-  }
+    public findOne(id: string): Observable<IFollower | undefined> {
+        return this._http.getOne(id);
+    }
 
-  public delete(follower: IFollower): Observable<{ deleted: boolean }> {
-    return this._http
-      .delete(follower)
-      .pipe(tap(() => this._refreshEvent$.next(true)));
-  }
+    // TODO: 5. Tap to next _refreshEvent$ in methods: create & delete & deleteAll
+    public create(follower: IFollower): Observable<IFollower> {
+        return this._http
+            .post(follower);
+    }
 
-  public deleteAll(): Observable<{ deleted: boolean }> {
-    return this._http
-      .deleteAll()
-      .pipe(tap(() => this._refreshEvent$.next(true)));
-  }
+    public delete(follower: IFollower): Observable<{ deleted: boolean }> {
+        return this._http
+            .delete(follower);
+    }
+
+    public deleteAll(): Observable<{ deleted: boolean }> {
+        return this._http
+            .deleteAll();
+    }
 }

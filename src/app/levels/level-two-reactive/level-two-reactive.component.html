@@ -1,58 +1,68 @@
 <article class="route-window bg-white overflow-auto">
   <span
-    class="
-      d-flex
-      align-items-center
-      flex-shrink-0
-      p-3
-      link-dark
-      text-decoration-none
-      border-bottom
-    "
+          class="d-flex align-items-center flex-shrink-0 p-3 link-dark text-decoration-none border-bottom"
   >
     <span class="fs-5 fw-semibold">Games CRUD</span>
     <span style="flex: 1 1 auto"></span>
   </span>
 
-  <scam-alert [type]="AlertType.Light" [message]="'src/app/levels/level-two-reactive'"></scam-alert>
-  <scam-alert [type]="AlertType.Info" [message]="'Dodawaj, usuwaj i pokazuj gry za pomocą RxJS, a przy okazji ulżyj serwerowi.'"></scam-alert>
+    <scam-alert [type]="AlertType.Light" [message]="'src/app/levels/level-two-reactive'"></scam-alert>
+    <scam-alert [type]="AlertType.Info"
+                [message]="'Wykorzystaj CRUD service i dodawaj, usuwaj, a nawet pokazuj gry.'"></scam-alert>
 
-  <ng-container *ngIf="vm$ | async as vm">
-    <header
-      class="p-3 bg-light text-white"
-      style="position: sticky; top: 0; z-index: 99"
-    >
-      <level-header-counters-n-search
-        [addedGamesLength]="vm.addedGames.length"
-        [gamesLength]="vm.games.length"
-        (toggleAddedGamesList)="addedListToggle.click()"
-        (search)="onCriteriaChange($event)"
-      ></level-header-counters-n-search>
+    <ng-container *ngIf="vm$ | async as vm">
+        <header
+                class="p-3 bg-light text-white"
+                style="position: sticky; top: 0; z-index: 99"
+        >
+            <level-header-counters-n-search
+                    [addedGamesLength]="vm.addedGames.length"
+                    [gamesLength]="vm.games.length"
+                    (toggleAddedGamesList)="addedListToggle.click()"
+                    (search)="onCriteriaChange($event)"
+            ></level-header-counters-n-search>
 
-      <button
-        #addedListToggle
-        type="button"
-        data-bs-toggle="collapse"
-        data-bs-target="#collapseAddedGames"
-        aria-expanded="false"
-        style="opacity: 0; visibility: hidden; height: 0"
-      ></button>
+            <button
+                #addedListToggle
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#collapseAddedGames"
+                aria-expanded="false"
+                style="opacity: 0; visibility: hidden; height: 0"
+            ></button>
 
-      <div class="collapse" id="collapseAddedGames">
-        <div class="card card-body">
-          <level-added-games-list
-            [addedGames]="vm.addedGames"
-            (removeGame)="onRemoveGame($event)"
-          ></level-added-games-list>
+            <div class="collapse" id="collapseAddedGames">
+                <div class="card card-body">
+                    <level-added-games-list
+                            [addedGames]="vm.addedGames"
+                            (removeGame)="onRemoveGame($event)"
+                    ></level-added-games-list>
+                </div>
+            </div>
+        </header>
+
+        <div class="container">
+            <div class="card m-2 mb-4">
+                <div class="card-header"><h5>Co należy zrobić w zadaniu</h5></div>
+                <div class="card-body">
+                    <scam-unordered-list
+                            [title]="'added-games.service.ts'"
+                            [list]="[
+                            'Napisać BehaviorSubjecta _crudActions$ do obsługi zdarzeń CRUD',
+                            'Stworzyć addedGames$ z _crudActions$.pipe + switchMap aby odświeżać listę gier (_getAddedGames())',
+                            'Stworzyc metodę: addGame(game: IGame): Observable<IGame>',
+                            'Tapnąć next(CrudAction) wewnątrz metod: _add oraz _remove',
+                        ]"
+                    ></scam-unordered-list>
+                    <scam-alert [type]="AlertType.Light"
+                                [message]="'level-two-reactive/added-games.service.ts'"></scam-alert>
+                </div>
+            </div>
+
+            <level-games-list
+                    [games]="vm.games"
+                    (addGame)="onAddGame($event)"
+            ></level-games-list>
         </div>
-      </div>
-    </header>
-
-    <div class="container">
-      <level-games-list
-        [games]="vm.games"
-        (addGame)="onAddGame($event)"
-      ></level-games-list>
-    </div>
-  </ng-container>
+    </ng-container>
 </article>
