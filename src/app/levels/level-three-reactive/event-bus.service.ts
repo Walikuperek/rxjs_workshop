@@ -22,6 +22,10 @@ export class EventBusService implements OnDestroy {
     // @ Public API
     public on<T>(type: Events, callback: (data: T) => void): any {
         // TODO: 2. return Subscription
+        //              - Use filter to filter only wanted events
+        //              - Use map to return event.data as T
+        //              - Use shareReplay to share the same observable
+        //              - Use takeUntil to unsubscribe when destroyed$ is called
     }
 
     public emit<T>(type: Events, data: T): void {
