@@ -1,27 +1,34 @@
 # Workshop
+RxJS with Angular 12.2.16
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.2.5.
+Naucz się lepiej posługiwać biblioteką RxJS. Spróbuj się z trzema zadaniami wewnątrz swojego IDE.
+Pobierz ten projekt i odpal poniższcze komendy
 
-## Development server
+## Co masz zrobić?
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+```
+git clone https://github.com/Walikuperek/rxjs_workshop.git
+```
 
-## Code scaffolding
+```
+ewentualnie cd ./tam-gdzie-poszedl-git-clone
+```
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+```
+npm install && ng serve --open
+```
 
-## Build
+## Kolejność
+1. Włącz aplikację
+2. Wejdź do folderu `rxjs_workshop/src/levels`
+3. Znajdziesz wewnątrz niego 2 typy modułów: `level-{1/2/3}` i `level-{1/2/3}-reactive`
+4. Przejdź do zadania `level-one` | `level-two` -- znajdziesz tam rozwiązania bez użycia RxjS
+5. Następnie przystąp do próby rozwiązania ich przy pomocy RxJS, np. wew. modułu `level-three-reactive`, gdzie musisz dokończyć event busa
+TIP: Znajdziesz rozwiązanie do każdego zadania wewnątrz aplikacji, w zakładce `Rozwiązania`
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+## Zdjęcia aplikacji
+![Zadanie 3](/src/assets/img/zadanie_event-bus_3.png)
+![Zadanie 1](/src/assets/img/zadanie_1_reactive.png)
+![Zadanie 2](/src/assets/img/zadanie_2_reactive.png)
 
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+Powodzenia!
