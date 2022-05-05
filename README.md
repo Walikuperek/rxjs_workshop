@@ -13,7 +13,7 @@ git clone https://github.com/Walikuperek/rxjs_workshop.git
 
 Przejdź w terminalu do lokalizacji tego repozytorium
 ```
-ewentualnie cd ./tam-gdzie-poszedl-git-clone
+cd ./tam-gdzie-poszedl-git-clone
 ```
 
 Zainstaluj zależności angulara w projekcie i odpal go(otwierając automatycznie przeglądarkę)
