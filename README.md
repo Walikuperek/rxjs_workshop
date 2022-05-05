@@ -6,17 +6,22 @@ Pobierz ten projekt i odpal poniższcze komendy
 
 ## Co masz zrobić?
 
+Pobierz repo
 ```
 git clone https://github.com/Walikuperek/rxjs_workshop.git
 ```
 
+Przejdź w terminalu do lokalizacji tego repozytorium
 ```
 ewentualnie cd ./tam-gdzie-poszedl-git-clone
 ```
 
+Zainstaluj zależności angulara w projekcie i odpal go(otwierając automatycznie przeglądarkę)
 ```
 npm install && ng serve --open
 ```
+* zainstaluje wew. projektu Angular 12.2.16
+
 
 ## Kolejność
 1. Włącz aplikację
