@@ -24,7 +24,10 @@ npm install && ng serve --open
 3. Znajdziesz wewnątrz niego 2 typy modułów: `level-{1/2/3}` i `level-{1/2/3}-reactive`
 4. Przejdź do zadania `level-one` | `level-two` -- znajdziesz tam rozwiązania bez użycia RxjS
 5. Następnie przystąp do próby rozwiązania ich przy pomocy RxJS, np. wew. modułu `level-three-reactive`, gdzie musisz dokończyć event busa
-TIP: Znajdziesz rozwiązanie do każdego zadania wewnątrz aplikacji, w zakładce `Rozwiązania`
+
+## Porady
+1. TIP: Znajdziesz rozwiązanie do każdego zadania wewnątrz aplikacji, w zakładce `Rozwiązania`
+2. TIP: Wewnątrz plików, w miejscach, gdzie masz pisać kod dodałem komentarze `TODO:`
 
 ## Zdjęcia aplikacji
 ![Zadanie 3](/src/assets/img/zadanie_event-bus_3.png)
