@@ -31,4 +31,8 @@ TIP: Znajdziesz rozwiązanie do każdego zadania wewnątrz aplikacji, w zakładc
 ![Zadanie 1](/src/assets/img/zadanie_1_reactive.png)
 ![Zadanie 2](/src/assets/img/zadanie_2_reactive.png)
 
-Powodzenia!
+### Autor
+Kacper Walczak 2021, Poznań
+Stworzone na potrzeby prowadzenia szkolenia z RxJS w firmie.
+
+Bierz ten kod i się ucz! Powodzenia!
