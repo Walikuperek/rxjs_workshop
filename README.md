@@ -1,7 +1,8 @@
 # Workshop
 RxJS with Angular 12.2.16
 
-![workshop](/assets/img/rxjsworkshop_ap.png)
+## Zdjęcie aplikacji
+![Zadanie 2](/src/assets/img/zadanie_2_reactive.png)
 
 Naucz się lepiej posługiwać biblioteką RxJS. Spróbuj się z trzema zadaniami wewnątrz swojego IDE.
 Pobierz ten projekt i odpal poniższcze komendy
@@ -35,11 +36,6 @@ npm install && ng serve --open
 ## Porady
 1. TIP: Znajdziesz rozwiązanie do każdego zadania wewnątrz aplikacji, w zakładce `Rozwiązania`
 2. TIP: Wewnątrz plików, w miejscach, gdzie masz pisać kod dodałem komentarze `TODO:`
-
-## Zdjęcia aplikacji
-![Zadanie 3](/src/assets/img/zadanie_event-bus_3.png)
-![Zadanie 1](/src/assets/img/zadanie_1_reactive.png)
-![Zadanie 2](/src/assets/img/zadanie_2_reactive.png)
 
 ### Autor
 Kacper Walczak 2021, Poznań.
