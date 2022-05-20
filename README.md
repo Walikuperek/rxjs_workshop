@@ -1,7 +1,7 @@
 # Workshop
 RxJS with Angular 12.2.16
 
-![workshop](assets/img/rxjsworkshop_ap.png)
+![workshop](/assets/img/rxjsworkshop_ap.png)
 
 Naucz się lepiej posługiwać biblioteką RxJS. Spróbuj się z trzema zadaniami wewnątrz swojego IDE.
 Pobierz ten projekt i odpal poniższcze komendy
