@@ -1,4 +1,4 @@
-# Workshop
+# Workshop 🇵🇱 PL LANG ONLY
 RxJS with Angular 12.2.16
 
 ## Zdjęcie aplikacji
